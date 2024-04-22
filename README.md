@@ -1,1 +1,1 @@
-# INFO288_Practico1
+# INFO288-Practico1
