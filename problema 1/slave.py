@@ -1,5 +1,6 @@
-# esclavo.py
 from flask import Flask, request, jsonify
+import os
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 
@@ -9,7 +10,13 @@ base_de_datos = {
     # Agrega más tipos de documentos y datos según sea necesario
 }
 
-@app.route('/search?tipo_doc')
+# Load environment variables from .envslave file
+load_dotenv('.envslave')
+
+bsd = os.environ.get('nombre')
+
+
+@app.route('/searchDocs')
 def search():
     titulo = request.args.get('titulo')
     tipo_doc = request.args.get('tipo_doc')
