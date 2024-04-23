@@ -25,9 +25,6 @@ mydb = mysql.connector.connect(
 print(mydb)
 myCursor = mydb.cursor()
 
-response = requests.post('http://' + os.getenv("NODO_MAESTRO") + '/registrarNodo', params={'url': os.getenv('NODO_SLAVE'), 'port': os.getenv('PORT')})
-    
-
 @app.route('/searchDocs')
 def testDocs():
     tipo_doc = request.args.get('tipo_doc')
@@ -79,4 +76,6 @@ def insertDoc():
     return jsonify({"mensaje": "Documento insertado correctamente"})
 
 if __name__ == '__main__':
+    response = requests.post('http://' + os.getenv("NODO_MAESTRO") + '/registrarNodo', params={'url': os.getenv('NODO_SLAVE'), 'port': os.getenv('PORT')})
+    print(response.json())    
     app.run(debug=True, port=os.getenv('PORT'))
