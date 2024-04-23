@@ -72,10 +72,18 @@ def testTitulo():
 @app.route('/insertDoc', methods=['POST'])
 def insertDoc():
     documento = request.json
-    base_de_datos.append(documento['titulo'])
-    return jsonify({"mensaje": "Documento insertado correctamente"})
+    print(documento)
+    titulo = documento['titulo']
+    tipo = documento['tipo_doc']
+    autor = documento['autor']
+    nodo = "slave"+os.getenv('TIPO_NODO').capitalize()
+    myCursor.execute(f'INSERT INTO {os.getenv("DB_TABLE")} (titulo, tipo, autor, nodo) VALUES (%s, %s, %s, %s)', (titulo, tipo, autor, nodo))
+    mydb.commit()
+    return jsonify({"status": "ok"})
+
+    
 
 if __name__ == '__main__':
-    response = requests.post('http://' + os.getenv("NODO_MAESTRO") + '/registrarNodo', params={'url': os.getenv('NODO_SLAVE'), 'port': os.getenv('PORT')})
+    response = requests.post('http://' + os.getenv("NODO_MAESTRO") + '/registrarNodo', params={'url': os.getenv('NODO_SLAVE'), 'port': os.getenv('PORT'), 'tipo_nodo': os.getenv('TIPO_NODO')})
     print(response.json())    
     app.run(debug=True, port=os.getenv('PORT'))

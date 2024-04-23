@@ -6,13 +6,6 @@ import mysql.connector
 
 app = Flask(__name__)
 
-# Diccionario que mapea tipos de documento a los esclavos correspondientes
-esclavos_por_tipo = {
-    "tesis": "http://localhost:5001",
-    "libro": "http://localhost:5002",
-    "video": "http://localhost:5003",
-
-}
 #Carga env master
 load_dotenv('.envmaster')
 
@@ -31,11 +24,39 @@ mycursor = mydb.cursor()
 #print (tipos)
 @app.route('/')
 def index():
-    return "Hola mundo"
+    return "Hola mundo!"
+
 @app.route('/registrarNodo', methods=['POST'])
 def registrarNodo():
     print("Registrando nodo", request.args.get('url'), request.args.get('port'))
-    return jsonify({"status": "ok"})
+        
+    tipo_nodo = request.args.get('tipo_nodo')
+    nodo_destino = request.args.get('url')+':'+request.args.get('port')
+
+        
+    if tipo_nodo and nodo_destino:
+        mycursor.execute("UPDATE tipos SET nodoDestino = %s, updatedAt = NOW() WHERE nombre = %s", (nodo_destino, tipo_nodo.lower()))
+        mydb.commit()
+        return jsonify({"status": "ok"})
+    else:
+        return jsonify({"Error": 'Falta tipo de documento o nodo destino'})
+    
+@app.route('/insert', methods=['POST'])
+def insert():
+    documento = request.json
+    print(documento)
+    tipo = documento['tipo_doc']
+    mycursor.execute("SELECT nodoDestino FROM tipos WHERE nombre = %s", (tipo.lower(),))
+    nodo_destino = mycursor.fetchone()
+
+    if nodo_destino:
+        response = requests.post('http://' + nodo_destino[0] + '/insertDoc', json=documento)
+        if response.status_code == 200:
+            return jsonify({"status": "ok"})
+        else:
+            return jsonify({"Error": 'Error en la insercion'})
+    else:
+        return jsonify({"Error": 'Tipo de documento no encontrado'})
 
 @app.route('/query')
 def test():
