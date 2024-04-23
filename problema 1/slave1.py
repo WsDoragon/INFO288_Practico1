@@ -48,10 +48,9 @@ def testTitulo():
     myCursor.execute(f'SELECT titulo, tipo, nodo FROM {os.getenv("DB_TABLE")}')
     docs = myCursor.fetchall()
     resultados = []
-    #print(palabras)    
+    
     for doc in docs:
         for palabra in palabras:
-            print(palabra)
             if palabra.lower() in doc[0].lower():
                 print("ENTRE")
                 resultados.append({"titulo": doc[0], "tipo": doc[1], "nodo": doc[2]})
