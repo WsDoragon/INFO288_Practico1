@@ -30,7 +30,7 @@ mycursor = mydb.cursor()
 #tipos = mycursor.fetchall()
 #print (tipos)
 
-@app.route('/test')
+@app.route('/query')
 def test():
     tipo_doc = request.args.get('tipo_doc')
     titulo = request.args.get('titulo')
@@ -61,45 +61,6 @@ def test():
         return jsonify(resultados)
     else:
         return jsonify({"Error": 'No se especifico operacion'})
-
-@app.route('/a?titulo')
-def testTitle():
-    titulo = request.args.get('titulo')
-    print(titulo)
-    if titulo:
-        mycursor.execute("SELECT nombre, nodoDestino FROM tipos")
-        esclavos = mycursor.fetchall()
-        resultados = []
-        for esclavo in esclavos:
-            response = requests.get(esclavo[1] + '/searchTitulo', params={'titulo': titulo})
-            if response.status_code == 200:
-                resultados.extend(response.json())
-        return jsonify(resultados)
-    else:
-        return jsonify({"Error": 'Título no especificado'})
-
-@app.route('/query')
-def query():
-    tipo_doc = request.args.get('tipo_doc').lower()
-
-    titulo = request.args.get('titulo')
-    print(tipo_doc, titulo)
-    if tipo_doc:
-        esclavos = [esclavos_por_tipo[doc] for doc in tipo_doc.split('+')]
-    else:
-        # Si no se proporciona tipo_doc, enviar la consulta a todos los esclavos
-        esclavos = list(esclavos_por_tipo.values())
-
-    resultados = []
-
-    for esclavo_url in esclavos:
-        # Realizar la consulta a cada esclavo
-        response = requests.get(esclavo_url + '/searchDocs', params={'tipo_doc': tipo_doc})
-        if response.status_code == 200:
-            # Agregar los resultados de este esclavo a la lista total de resultados
-            resultados.extend(response.json())
-
-    return jsonify(resultados)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

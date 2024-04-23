@@ -7,7 +7,7 @@ conda_env_path = "C:/Users/berna/Anaconda3/Scripts/activate.bat"
 conda_env_name = "INFO288"
 
 # Comando para activar el entorno Conda
-activate_cmd = f"call {conda_env_path} {conda_env_name}"
+activate_cmd = f"call conda activate {conda_env_name}"
 
 for i in range(1, 3):
     # Comando para ejecutar el archivo slave.py
