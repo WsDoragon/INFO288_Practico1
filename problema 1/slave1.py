@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+import mysql.connector
 import os
 from dotenv import load_dotenv
 from urllib.parse import unquote_plus
@@ -13,13 +14,18 @@ base_de_datos =  [
     "Fisica Cuantica", 
     "Cuantica de los fluidos"
     ]
-    
-
 
 # Load environment variables from .envslave file
 load_dotenv('.envslave')
+#Conectar a la base de datos
+mydb = mysql.connector.connect(
+    host=os.getenv('DB_HOST'),
+    user=os.getenv('DB_USER'),
+    password=os.getenv('DB_PASS'),
+    database=os.getenv('DB_NAME')
+    )
+print(mydb)
 
-bsd = os.environ.get('nombre')
 
 
 @app.route('/searchDocs')
