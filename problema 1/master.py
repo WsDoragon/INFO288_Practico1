@@ -29,6 +29,13 @@ mycursor = mydb.cursor()
 #mycursor.execute("SELECT * FROM tipos")
 #tipos = mycursor.fetchall()
 #print (tipos)
+@app.route('/')
+def index():
+    return "Hola mundo"
+@app.route('/registrarNodo', methods=['POST'])
+def registrarNodo():
+    print("Registrando nodo", request.args.get('url'), request.args.get('port'))
+    return jsonify({"status": "ok"})
 
 @app.route('/query')
 def test():

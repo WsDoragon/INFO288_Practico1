@@ -3,21 +3,19 @@ import mysql.connector
 import os
 from dotenv import load_dotenv
 from urllib.parse import unquote_plus
+import sys
+import requests
 
 app = Flask(__name__)
 
-# Base de datos simulada para este esclavo
-base_de_datos =  [
-    "Tesis sobre...", 
-    "Otra tesis...", 
-    "Cambios Fasicos",
-    "Fisica Cuantica", 
-    "Cuantica de los fluidos"
-    ]
-
+args = sys.argv
+if len(args) < 2:
+    print("Porfavor ingrese posicion .env\nEjemplo: python slave1.py ./slave_envs/.envslave1")
+    sys.exit(1)
+print("Arguments:", args)
 
 #Conexion a BSD
-load_dotenv('.envslave')
+load_dotenv(args[1])
 mydb = mysql.connector.connect(
     host=os.getenv('DB_HOST'),
     user=os.getenv('DB_USER'),
@@ -27,6 +25,8 @@ mydb = mysql.connector.connect(
 print(mydb)
 myCursor = mydb.cursor()
 
+response = requests.post('http://' + os.getenv("NODO_MAESTRO") + '/registrarNodo', params={'url': os.getenv('NODO_SLAVE'), 'port': os.getenv('PORT')})
+    
 
 @app.route('/searchDocs')
 def testDocs():
@@ -45,34 +45,16 @@ def testTitulo():
     titulo = request.args.get('titulo')
     titulo = unquote_plus(titulo)
     palabras = titulo.split(' ')
-    myCursor.execute(f'SELECT titulo, tipo, nodo FROM {os.getenv("DB_TABLE")}')
+    myCursor.execute(f'SELECT titulo, tipo, nodo, autor FROM {os.getenv("DB_TABLE")}')
     docs = myCursor.fetchall()
     resultados = []
     
     for doc in docs:
         for palabra in palabras:
             if palabra.lower() in doc[0].lower():
-                print("ENTRE")
-                resultados.append({"titulo": doc[0], "tipo": doc[1], "nodo": doc[2]})
+                resultados.append({"titulo": doc[0], "tipo": doc[1], "nodo": doc[2], "autor": doc[3]})
                 break
     return jsonify(resultados)
-
-@app.route('/testDocs')
-def search():
-    tipo_doc = request.args.get('tipo_doc')
-    resultados = []
-    for documento in base_de_datos:
-        resultados.append(
-            {"titulo": documento, 
-             "nodo": "Slave Tesis", 
-             "tipo": tipo_doc})
-
-    #resultados = [documento for documento in base_de_datos]
-    return jsonify(resultados)
-
-    
-@app.route('/testTitulo')
-def searchTitle():
     titulo = request.args.get('titulo')
     palabras = titulo.split(' ')
     for i in palabras: print(i)
@@ -97,4 +79,4 @@ def insertDoc():
     return jsonify({"mensaje": "Documento insertado correctamente"})
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)  
+    app.run(debug=True, port=os.getenv('PORT'))
