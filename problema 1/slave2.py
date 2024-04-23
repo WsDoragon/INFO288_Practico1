@@ -7,11 +7,11 @@ app = Flask(__name__)
 
 # Base de datos simulada para este esclavo
 base_de_datos =  [
-    "Tesis sobre...", 
-    "Otra tesis...", 
-    "Cambios Fasicos",
-    "Fisica Cuantica", 
-    "Cuantica de los fluidos"
+    "Tesis sobre...2", 
+    "Otra tesis...2", 
+    "Cambios Fasicos2",
+    "Fisica Cuantica2", 
+    "Cuantica de los fluidos2"
     ]
     
 
@@ -29,7 +29,7 @@ def search():
     for documento in base_de_datos:
         resultados.append(
             {"titulo": documento, 
-             "nodo": "Slave Tesis", 
+             "nodo": f"Slave {tipo_doc}", 
              "tipo": tipo_doc})
 
     #resultados = [documento for documento in base_de_datos]
@@ -49,11 +49,11 @@ def searchTitle():
             if palabra.lower() in documento.lower():
                 resultados.append(
                     {"titulo": documento, 
-                    "nodo": "Slave Tesis", 
+                    "nodo": "Slave General", 
                     "tipo": "tesis"})
                 break 
             
     return jsonify(resultados)
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)  # Cambia el puerto para cada esclavo
+    app.run(debug=True, port=5002)  # Cambia el puerto para cada esclavo
