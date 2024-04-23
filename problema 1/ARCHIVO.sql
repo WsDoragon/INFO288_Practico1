@@ -29,6 +29,7 @@ CREATE TABLE `db4` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` mediumtext NOT NULL,
   `tipo` varchar(150) DEFAULT NULL,
+  `autor` varchar(150) DEFAULT NULL,
   `nodo` varchar(100) NOT NULL,
   `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
@@ -45,6 +46,7 @@ DROP TABLE IF EXISTS `db3`;
 CREATE TABLE `db3` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` mediumtext NOT NULL,
+  `autor` varchar(150) DEFAULT NULL,
   `tipo` varchar(150) DEFAULT NULL,
   `nodo` varchar(100) NOT NULL,
   `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
@@ -62,6 +64,7 @@ DROP TABLE IF EXISTS `db2`;
 CREATE TABLE `db2` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` mediumtext NOT NULL,
+  `autor` varchar(150) DEFAULT NULL,
   `tipo` varchar(150) DEFAULT NULL,
   `nodo` varchar(100) NOT NULL,
   `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
@@ -79,6 +82,7 @@ DROP TABLE IF EXISTS `db1`;
 CREATE TABLE `db1` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` mediumtext NOT NULL,
+  `autor` varchar(150) DEFAULT NULL,
   `tipo` varchar(150) DEFAULT NULL,
   `nodo` varchar(100) NOT NULL,
   `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
