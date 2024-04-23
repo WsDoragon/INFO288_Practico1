@@ -97,9 +97,9 @@ CREATE TABLE `db1` (
 LOCK TABLES `db1` WRITE;
 /*!40000 ALTER TABLE `db1` DISABLE KEYS */;
 INSERT INTO `db1` VALUES
-(1,'Cambios Fasicos','tesis','slaveTesis','2024-04-22 16:01:49'),
-(2,'Fisica Cuantica','tesis','slaveTesis','2024-04-22 16:01:49'),
-(3,'Cuantica de los fluidos','tesis','slaveTesis','2024-04-22 16:01:49');
+(1,'Cambios Fasicos','Juan Perez','tesis','slaveTesis','2024-04-22 16:01:49'),
+(2,'Fisica Cuantica','Pedro Perez','tesis','slaveTesis','2024-04-22 16:01:49'),
+(3,'Cuantica de los fluidos','Tesla','tesis','slaveTesis','2024-04-22 16:01:49');
 /*!40000 ALTER TABLE `db1` ENABLE KEYS */;
 UNLOCK TABLES;
 
