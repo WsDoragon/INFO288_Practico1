@@ -2,6 +2,10 @@ import socket
 import signal
 import sys
 
+from clases import Player
+from clases import Team
+
+
 def manejar_conexion(conexion, direccion_cliente):
     print(f"Conexión entrante desde {direccion_cliente}")
 
@@ -14,6 +18,9 @@ def manejar_conexion(conexion, direccion_cliente):
 
             mensaje_cliente = datos.decode()
             print(f"Mensaje recibido del cliente {direccion_cliente}: {mensaje_cliente}")
+
+            #p = Player(mensaje_cliente,direccion_cliente[0],direccion_cliente[1],ip_servidor,puerto_servidor)
+            #players.append(p)
 
             # Enviar respuesta al cliente
             respuesta = f"Me llegó tu mensaje: {mensaje_cliente}"
@@ -63,6 +70,14 @@ if __name__ == "__main__":
     puerto_servidor = 12345     # Puedes cambiar este puerto por el que desees utilizar
 
     # Iniciar el servidor
+    nTeams = 2
+    teams = []
+    pt = Team(1)
+    st = Team(2)
+    teams.append(pt)
+    teams.append(st)
+
+
     iniciar_servidor(ip_servidor, puerto_servidor)
 
 
