@@ -3,3 +3,8 @@ DB_HOST = "localhost"
 DB_USER = "root"
 DB_PASS = "a"
 DB_TABLE = "db1"
+NODO_MAESTRO = "localhost:5000"
+NODO_SLAVE = "localhost"
+PORT = 5001
+TIPO_NODO = "tesis"
+
