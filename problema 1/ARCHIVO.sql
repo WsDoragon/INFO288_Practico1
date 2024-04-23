@@ -19,6 +19,57 @@ CREATE DATABASE IF NOT EXISTS `distribuidos1`;
 USE `distribuidos1`;
 
 --
+-- Table structure for table `db4`
+--
+
+DROP TABLE IF EXISTS `db4`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db4` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo` mediumtext NOT NULL,
+  `tipo` varchar(150) DEFAULT NULL,
+  `nodo` varchar(100) NOT NULL,
+  `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `db3`
+--
+
+DROP TABLE IF EXISTS `db3`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db3` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo` mediumtext NOT NULL,
+  `tipo` varchar(150) DEFAULT NULL,
+  `nodo` varchar(100) NOT NULL,
+  `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `db2`
+--
+
+DROP TABLE IF EXISTS `db2`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `db2` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo` mediumtext NOT NULL,
+  `tipo` varchar(150) DEFAULT NULL,
+  `nodo` varchar(100) NOT NULL,
+  `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `db1`
 --
 
