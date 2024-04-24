@@ -1,10 +1,14 @@
 import socket
 import signal
 import sys
+import threading
 
 from clases import Player
 from clases import Team
 from functions import registered
+from functions import verificar_equipos
+
+from matchMaking import matchMaking
 
 #usar el hilo principal para el registro de nuevos players
 #usar un hilo para emparejar
@@ -12,6 +16,8 @@ from functions import registered
 
 
 def manejar_conexion(conexion, direccion_cliente):
+    global hiloMatchMaking
+    global hiloMatchManagment
     print(f"Conexión entrante desde {direccion_cliente}")
 
     try:
@@ -34,12 +40,20 @@ def manejar_conexion(conexion, direccion_cliente):
                 jugadores.append(u)
                 pass
 
-            #p = Player(mensaje_cliente,direccion_cliente[0],direccion_cliente[1],ip_servidor,puerto_servidor)
-            #players.append(p)
-
             # Enviar respuesta al cliente
             respuesta = f"Me llegó tu mensaje: {mensaje_cliente}"
             conexion.sendall(respuesta.encode())
+
+            if(len(jugadores)>0 and hiloMatchMaking):
+                #ejecutar el hilo de ingresar a equipo o crear equipo
+                hiloMatchMakingObj.start()
+                hiloMatchMaking = False
+                pass
+
+            if(verificar_equipos(teams) and hiloMatchManagment):
+                #ejecutar hilo de juego
+                hiloMatchManagment = False
+                pass
 
     except KeyboardInterrupt:
         print("Se recibió una señal de interrupción. Cerrando la conexión con el cliente.")
@@ -81,8 +95,8 @@ def iniciar_servidor(ip, puerto):
 
 if __name__ == "__main__":
     # Dirección IP y puerto en el que escuchará el servidor
-    ip_servidor = "127.0.0.1"  # Puedes cambiar esta dirección por la que necesites
-    puerto_servidor = 12345     # Puedes cambiar este puerto por el que desees utilizar
+    ip_servidor = "127.0.0.1"  
+    puerto_servidor = 12345
 
     # Iniciar el servidor
     jugadores = []
@@ -93,6 +107,10 @@ if __name__ == "__main__":
     teams.append(pt)
     teams.append(st)
 
+    hiloMatchMaking = True
+    hiloMatchManagment = True    
+
+    hiloMatchMakingObj = threading.Thread(target=matchMaking)
 
     iniciar_servidor(ip_servidor, puerto_servidor)
 

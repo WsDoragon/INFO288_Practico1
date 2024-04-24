@@ -1,0 +1,20 @@
+Definicion de las estructuras de los distintos mensajes que habrá 
+
+un solo string separado por "|" para hacer split
+
+Mensaje servidor: 
+ 
+  id_tipo_de_mensaje | Mensaje
+  1 | unirse o crear y unirse
+  2 | turno (lanzar dados o esperar)
+  3 | puntajes por equipo
+  4 | ganador o perdedor
+  5 | error de conexion
+
+Mensaje cliente:
+
+  id_tipo_de_mensaje | Mensaje
+
+  1 | opcion a elegir
+  2 | lanzaramiento
+  3 | error de conexion 

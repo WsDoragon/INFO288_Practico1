@@ -9,5 +9,11 @@ def registered(ip, puerto, lista):
     return False
 
 
-
-# registro de par (ip,port)
+def verificar_equipos(lista_equipos):
+    count = 0
+    for equipo in lista_equipos:
+        if len(equipo.players) > 0:
+            count += 1
+            if count == 2:
+                return True
+    return False
