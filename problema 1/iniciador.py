@@ -1,10 +1,16 @@
 import os
+import sys
 
-# Ruta del entorno Conda
-conda_env_path = "C:/Users/berna/Anaconda3/Scripts/activate.bat"
 
+
+args = sys.argv
+if len(args) < 2:
+    print("Porfavor ingrese ambiente de conda\nEjemplo: python iniciador.py INFO288")
+    sys.exit(1)
+
+print("Arguments:", args)
 # Nombre del entorno Conda
-conda_env_name = "INFO288"
+conda_env_name = args[1]
 
 # Comando para activar el entorno Conda
 activate_cmd = f"call conda activate {conda_env_name}"
@@ -13,7 +19,7 @@ env_files = [f for f in os.listdir("slave_envs")]
 
 # Imprimir los nombres de los archivos .env encontrados
 for env_file in env_files:
-    print(env_file)
+    print(env_file, "encontrado")
 for i in env_files:
     # Comando para ejecutar el archivo slave.py
     execute_cmd = f"python slave1.py ./slave_envs/{i}"
