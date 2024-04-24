@@ -1,9 +1,25 @@
 # Problema 1
 
-### Descripción
- Se propuso crear una Biblioteca digital distribuida segun el tipo documento utilizando Python, esta solucion contempla el realizar diferentes consultas mediante la parametros en la url de la biblioteca
+## Descripción
+ Se propuso crear una Biblioteca digital distribuida segun el tipo documento utilizando Python, esta solucion contempla el realizar diferentes consultas mediante la parametros en la url de la biblioteca.
+
+## Framework
+* Flask: 
+    * Flask es un framework web ligero y flexible para Python que proporciona herramientas y bibliotecas para construir aplicaciones web rápidas y escalables. Se utiliza en este proyecto para manejar las rutas, vistas y la lógica de la aplicación.
 
 ## Funciones
+Esta implementacion de Biblioteca Distribuida cuenta con las siguientes funciones:
+* Obtener datos de los diferentes nodos, de forma especifica o en modo broadcast.
+* Realizar una actualizacion de la url y puerto del nodo destino que posee un tipo de documento especifico, esto mediante una peticion desde un nodo esclavo al nodo maestro.
+    *  Metodo: POST | ``http://localhost:5000/registrarNodo`` 
+
+    | Variable  | Descripcion |
+    | --------  | ----------- |
+    | url       | URL del nodo esclavo |
+    | port      | Puerto sobre el cual se ejecuta el nodo |
+    | tipo_nodo | Tipo de documento que almacena el nodo |
+
+    * Este proceso es automatico de cada slave, lo unico necesario es tener en la base de datos un registro previo del tipo de documento que se quiere agregar e igualmente una base de datos / tabla especifica para el nodo.
 
 ## Requisitos
 * Es necesario estar en la carpeta `problema 1`
