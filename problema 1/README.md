@@ -75,4 +75,23 @@ python master.py
     * DB_USER = [Usuario de base de datos]
     * DB_PASS = [Contraseña de usuario]
 
+## Uso de Aplicación
+Este sistema esta diseñado para ser utilizado mediante un navegador web o consultas mediante software parecido a Postman
+* Metodo: POST | ``http://localhost:5000/insert`` 
+    * Se utiliza para insertar un elemento nuevo en un nodo existente.
+    * Datos Necesarios:
+        | Variable | Descripcion | 
+        | -------- | ----------- |
+        | titulo   | Nombre / titulo del documento subido |
+        | tipo_doc | Nombre del tipo de documento |
+        | autor    | Nombre del autor o quien sube el archivo |
+
+* Metodo: GET | ``http://localhost:5000/query?titulo=[Terminos a buscar]``
+    * Mediante esta url se realiza una busqueda de los documentos que tengan un titulo conteniendo alguna de las palabras entregadas en la url en todos los nodos que maneja la biblioteca distribuida, posteriormente se entregan todos estos.
+    * Ejemplo de uso: `http://localhost:5000/query?titulo=fisica+cuantica`
+
+* Metodo: GET | ``http://localhost:5000/query?tipo_doc=[tipo de documento a buscar]``
+    * Mediante esta url se realiza una peticion para consultar a nodos especificos, obteniendo como resultado los elementos manejados por cada uno de esos nodos y entregandolo al usuario.
+    * Ejemplo de uso: `http://localhost:5000/query?tipo_doc=tesis+general+audio`
+
 
