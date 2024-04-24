@@ -39,6 +39,11 @@ class Team:
             self.turn = False
         pass
     
+    def playersCount(self):
+        return len(self.players)
+        
+        
+    
     
 
 
