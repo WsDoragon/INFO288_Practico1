@@ -52,22 +52,6 @@ def testTitulo():
                 resultados.append({"titulo": doc[0], "tipo": doc[1], "nodo": doc[2], "autor": doc[3]})
                 break
     return jsonify(resultados)
-    titulo = request.args.get('titulo')
-    palabras = titulo.split(' ')
-    for i in palabras: print(i)
-    resultados = []
-    #Busqueda en la base de datos mediante el titulo
-    for documento in base_de_datos:
-        for palabra in palabras:
-     #       print(palabra)
-            if palabra.lower() in documento.lower():
-                resultados.append(
-                    {"titulo": documento, 
-                    "nodo": "Slave Tesis", 
-                    "tipo": "tesis"})
-                break 
-            
-    return jsonify(resultados)
 
 @app.route('/insertDoc', methods=['POST'])
 def insertDoc():
