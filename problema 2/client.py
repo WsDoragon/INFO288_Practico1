@@ -1,50 +1,87 @@
 import socket
-import sys
-import signal
+import json
+import random
+import threading
+import queue
+import time
 
-def main():
-    # Verificar que se proporcionen la dirección IP y el puerto del servidor como argumentos
-    if len(sys.argv) != 3:
-        print("Uso: python3 cliente.py <ip_servidor> <puerto_servidor>")
-        sys.exit(1)
 
-    ip_servidor = sys.argv[1]
-    puerto_servidor = int(sys.argv[2])
+def getFeedback(cola,accion):
+    datos = cola.get()
+    if(datos["status"] == 0 and datos["action"] == accion):
+        return False
+    elif(datos["status"] == 1 and datos["action"] == accion):
+        return True
+    else:
+        return False
 
-    # Crear un objeto socket TCP/IP
-    cliente_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+def sendMsj(msj):
+    data["action"] = msj
+    json_data = json.dumps(data)
+    client_socket.sendto(json_data.encode('utf-8'), (server_host, server_port))
 
-    try:
-        # Conectar el socket al servidor
-        cliente_socket.connect((ip_servidor, puerto_servidor))
-        print(f"Conexión establecida con el servidor {ip_servidor}:{puerto_servidor}")
+def recibir_mensajes():
+    while True:
+        try:
+            message, _ = client_socket.recvfrom(1024)
+            json_data = message.decode('utf-8')
+            received_data = json.loads(json_data)
+            colaMsj.put(received_data)
+            print(received_data) #aki
+        except Exception as e:
+            print(f"Error al recibir mensajes del servidor: {e}")
+            break
 
-        while True:
-            # Esperar por la entrada del usuario para enviar un mensaje al servidor
-            mensaje = input("Ingrese un mensaje para enviar al servidor (o 'exit' para salir): ")
+#  ------Varibles-------
+server_host = '192.168.1.26' 
+server_port = 20001
+client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-            if mensaje.lower() == "exit":
-                break
 
-            # Enviar el mensaje al servidor
-            cliente_socket.sendall(mensaje.encode())
+data = {
+  "action": "c, t ,m , r, s, d", 
+  "status": 0, 
+  "nickName": "Server",
+  "Dice": 0,
+  "teamId":0
+}
 
-            # Esperar por la respuesta del servidor
-            respuesta = cliente_socket.recv(1024)
-            print("Respuesta del servidor:", respuesta.decode())
+json_data = json.dumps(data)
+colaMsj = queue.Queue()
 
-    except KeyboardInterrupt:
-        print("Se recibió una señal de interrupción. Cerrando el cliente.")
-        cliente_socket.close()
-        sys.exit()
-    except ConnectionRefusedError:
-        print("No se pudo establecer conexión con el servidor.")
 
-    finally:
-        # Cerrar el socket
-        #cliente_socket.close()
-        pass
 
-if __name__ == "__main__":
-    main()
 
+# ---------- variables de control -------------
+
+ini_demon = True
+is_connected = False
+waiting_time = (random.randint(500, 5000))/1000
+
+
+
+# --------- flujo principal --------------
+
+while True:
+
+    if ini_demon:# El hilo se ejecutará en segundo plano
+        receiving_thread = threading.Thread(target=recibir_mensajes)
+        receiving_thread.daemon = True  
+        receiving_thread.start()
+        ini_demon = False
+
+    if not is_connected:
+        data["action"] = "c"
+        json_data = json.dumps(data)
+        client_socket.sendto(json_data.encode('utf-8'), (server_host, server_port))
+        #time.sleep(waiting_time)
+        print("Esperando conexion con el servidor")
+        while(colaMsj.empty()):
+            print(".", end='', flush=True)
+            time.sleep(waiting_time)
+        if(getFeedback(colaMsj,"c")):
+            print("conexion exitosa! \n")
+            is_connected = True
+    
+# Cerrar el socket al finalizar
+client_socket.close()

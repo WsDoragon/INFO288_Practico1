@@ -1,13 +1,11 @@
 #definir funciones
 
 
-def registered(ip, puerto, lista):
-    for x in lista:
-        if(ip == x.ip and puerto == x.port):
-            return True
-        
-    return False
-
+def has_conex(ip, puerto, lista_clientes):
+    for cliente in lista_clientes:
+        if cliente.ip == ip and cliente.puerto == puerto:
+            return True  # Se encontró un cliente con la misma IP y puerto
+    return False  # No se encontró ningún cliente con la misma IP y puerto
 
 def verificar_equipos(lista_equipos):
     count = 0
