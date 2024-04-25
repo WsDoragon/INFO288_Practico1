@@ -7,7 +7,7 @@ Mensaje
 """
 definicion de mensaje
 
-action: (c)onectar, (t)eam-elegir,(m)akeTeam , (r)oll dado,(s)tadistic ,(d)isconect
+action: (c)onectar, (t)eam-elegir,(m)akeTeam o elegir , (r)oll dado,(s)tadistic ,(d)isconect
 status: 0 false 1 true: bug o no
 nick name: nombre
 dice: resultado del dado
@@ -21,10 +21,11 @@ feedback = {
   "nickName": "Server",
   "Dice": 0,
   "teamId":0
+  "stadis":0
 }
 
 note_leo 
 
 git add .
 git commit -m "msj"
-git push origin "branch"
+git push origin "LeoBranch"
