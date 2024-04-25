@@ -3,16 +3,24 @@ import signal
 import sys
 import threading
 
+import time
+
 from clases import Player
 from clases import Team
 from functions import registered
 from functions import verificar_equipos
 
-from matchMaking import matchMaking
+#from matchMaking import matchMaking
+#from matchManagment import matchManagment
 
-#usar el hilo principal para el registro de nuevos players
-#usar un hilo para emparejar
-#usar otro hilo para el juego en si
+def matchMaking(servidor_socket,lista_jugadores):
+    while True:
+        print("aaaa")
+        print(lista_jugadores[0].ip)
+        print(lista_jugadores[0].port)
+        mensaje = "envio desde hilo manin!!"
+        servidor_socket.sendto(mensaje.encode('utf-8'), (lista_jugadores[0].ip,lista_jugadores[0].port))
+        time.sleep(15)
 
 
 def manejar_conexion(conexion, direccion_cliente):
@@ -63,7 +71,7 @@ def manejar_conexion(conexion, direccion_cliente):
 
 def iniciar_servidor(ip, puerto):
     # Crear un objeto socket TCP/IP
-    servidor_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    # servidor_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     try:
         # Permitir reutilizar el puerto después de cerrar el socket
@@ -91,7 +99,8 @@ def iniciar_servidor(ip, puerto):
 
     finally:
         # Cerrar el socket del servidor
-        servidor_socket.close()
+        #servidor_socket.close()
+        pass
 
 if __name__ == "__main__":
     # Dirección IP y puerto en el que escuchará el servidor
@@ -108,9 +117,12 @@ if __name__ == "__main__":
     teams.append(st)
 
     hiloMatchMaking = True
-    hiloMatchManagment = True    
+    hiloMatchManagment = True 
 
-    hiloMatchMakingObj = threading.Thread(target=matchMaking)
+    servidor_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)   
+
+
+    hiloMatchMakingObj = threading.Thread(target=matchMaking,kwargs={"servidor_socket":servidor_socket,"lista_jugadores":jugadores})
 
     iniciar_servidor(ip_servidor, puerto_servidor)
 

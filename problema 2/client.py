@@ -42,7 +42,8 @@ def main():
 
     finally:
         # Cerrar el socket
-        cliente_socket.close()
+        #cliente_socket.close()
+        pass
 
 if __name__ == "__main__":
     main()

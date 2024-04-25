@@ -18,3 +18,9 @@ Mensaje cliente:
   1 | opcion a elegir
   2 | lanzaramiento
   3 | error de conexion 
+
+leo 
+
+git add .
+git commit -m "msj"
+git push origin "branch"
