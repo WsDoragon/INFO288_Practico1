@@ -62,20 +62,38 @@ def insert():
 def test():
     tipo_doc = request.args.get('tipo_doc')
     titulo = request.args.get('titulo')
-    print(titulo)
+    #print(titulo)
     if tipo_doc:
-        mycursor.execute("SELECT nombre, nodoDestino FROM tipos WHERE nombre = %s", (tipo_doc.lower(),))
-        esclavoTipo = mycursor.fetchone()
-        print(esclavoTipo)
-        if esclavoTipo:
-            esclavo = esclavoTipo[1]
-            response = requests.get(esclavo + '/searchDocs', params={'tipo_doc': tipo_doc.lower()})
-            if response.status_code == 200:
-                return jsonify(response.json())
+        print("Query de tipo: ",tipo_doc)
+        resultados = []
+        tiposDocs = tipo_doc.split(' ')
+        for tipo in tiposDocs:
+            mycursor.execute("SELECT nombre, nodoDestino FROM tipos WHERE nombre = %s", (tipo.lower(),))
+            nodo = mycursor.fetchone()
+            #print(nodo[0])
+            if nodo:
+                response = requests.get("http://" + nodo[1] + '/searchDocs', params={'tipo_doc': tipo})
+                if response.status_code == 200:
+                    resultados.extend(response.json())
             else:
-                return jsonify({"Error": 'Error en la consulta'})
-        else:
-            return jsonify({"Error": 'Tipo de documento no encontrado'})
+                resultados.append([{"Error": 'Tipo de documento no encontrado', "tipo": tipo, "status": "404 - Not Found"}])
+        return jsonify(resultados)
+    
+        """
+        mycursor.execute("SELECT nombre, nodoDestino FROM tipos WHERE nombre = %s", (tipo.lower(),))
+                esclavoTipo = mycursor.fetchone()
+                print(esclavoTipo)
+                if esclavoTipo:
+                    esclavo = esclavoTipo[1]
+                    response = requests.get(esclavo + '/searchDocs', params={'tipo_doc': tipo.lower()})
+                    if response.status_code == 200:
+                        return jsonify(response.json())
+                    else:
+                        return jsonify({"Error": 'Error en la consulta'})
+                else:
+                    return jsonify({"Error": 'Tipo de documento no encontrado'})
+        """      
+
         
     elif titulo:
         mycursor.execute("SELECT nombre, nodoDestino FROM tipos")
