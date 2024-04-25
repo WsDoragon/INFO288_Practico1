@@ -17,3 +17,6 @@
 | ---------- |
 * Puntuaciones manejadas por servidor o Cliente, vale de ambas formas
 * Es asincrona, se pueden inscribir equipos en cualquier momento.
+
+correr server: python3 server.py
+correr cliente python3 client.py ip port
