@@ -12,6 +12,34 @@ from functions import has_conex
 from functions import verificar_equipos
 from functions import get_index
 
+
+def game(equipos,jugadores):
+    while True:
+        for x in equipos:
+            for y in x.players:
+                sendFeedback(feedback,"r",1,"server",0,"",(y.ip,y.port))
+            time.sleep(10) #en main todos los jugadores a los que les llego el msj deberian enviar sus dados y ser sumados
+            while(x.played < len(x.players)):
+                time.sleep(5)
+                print("esperando...")
+            x.played = 0
+        
+        #enviar puntajes
+        msj = ""
+        for t in equipos:
+             msj += str(t.id)
+             msj += "="
+             msj += str(t.getPoints())
+             msj += " | "
+        
+        for x in equipos:
+            for y in x.players:
+                sendFeedback(feedback,"s",1,"server",0,msj,(y.ip,y.port))
+        
+        time.sleep(7)
+        print(msj)
+             
+
 def sendFeedback(feedback,act,stat,nick,ndice,stadis,target):
     feedback["action"] = act
     feedback["status"] = stat
@@ -31,7 +59,8 @@ server_socket.bind((host, port))
 MAX_USERS_PER_IP = 64
 jugadores = []
 waitingConnect = Queue()
-demon = False
+demon_game = False
+
 pt = Team(0)
 st = Team(1)
 equipos = []
@@ -63,6 +92,13 @@ while True:
     received_data = json.loads(json_data)# Convertir la cadena JSON de vuelta a un diccionario
     print(received_data)
 
+    if demon_game and verificar_equipos(equipos):
+            game_thread = threading.Thread(target=game,kwargs={"equipos":equipos, "jugadores": jugadores})
+            game_thread.daemon = True  
+            game_thread.start()
+            demon_game = False
+            pass
+        
     if received_data["action"] == "c" and not has_conex(addr[0],addr[1],jugadores):
             new_player = Player(received_data["nickName"],addr[0],addr[1],'192.168.1.26',20001,idCounter)
             jugadores.append(new_player)
@@ -86,7 +122,18 @@ while True:
               equipos.append(new_team)
          else:
               equipos[received_data["teamId"]].players.append(jugadores[j])
+         
+         if (firstConex):
+            demon_game = True
+            firstConex = False
     
+    if received_data["action"] == "r":
+         #j = get_index(addr[0],addr[1],jugadores)
+         jt = received_data["teamId"]
+         result = received_data["Dice"]
+         equipos[jt].points += result
+         equipos[jt].played += 1
+         
         
     print("Lista de clientes conectados por IP:")
     for cliente in jugadores:

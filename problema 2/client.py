@@ -120,6 +120,22 @@ while True:
         if(getFeedback(colaMsj,"m")):
             print("conexion exitosa! \n")
             has_elected = True
+    
+    if(not colaMsj.empty()):
+        datos = colaMsj.get()
+        if(datos["action"] == "r"): #enviar dado girado
+            data["action"] = "r"
+            data["Dice"] = random.randint(1, 6)
+            json_data = json.dumps(data)
+            client_socket.sendto(json_data.encode('utf-8'), (server_host, server_port))
+            print("se envio el dado!")
+            #verificar accion
+        if(datos["action"] == "s"):
+            print(datos["stadis"])
+            print("\n")
+        pass
+
+        
 
     
 # Cerrar el socket al finalizar

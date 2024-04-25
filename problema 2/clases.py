@@ -32,10 +32,13 @@ class Team:
         self.players = []
         self.points = 0
         self.turn = False
+        self.played = 0
     
     def playersCount(self):
         return f"T:{self.id} pp:{len(self.players)}+"
         
+    def getPoints(self):
+        return self.points
         
     
     

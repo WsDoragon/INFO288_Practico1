@@ -18,6 +18,6 @@ def verificar_equipos(lista_equipos):
     for equipo in lista_equipos:
         if len(equipo.players) > 0:
             count += 1
-            if count == 2:
+            if count == 1:
                 return True
     return False
