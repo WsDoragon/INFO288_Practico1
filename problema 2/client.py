@@ -65,12 +65,12 @@ has_elected = False
 
 
 waiting_time = (random.randint(500, 5000))/1000
-
+game_continue = True
 
 
 # --------- flujo principal --------------
 
-while True:
+while game_continue:
 
     if ini_demon:# El hilo se ejecutará en segundo plano
         receiving_thread = threading.Thread(target=recibir_mensajes)
@@ -143,7 +143,11 @@ while True:
             for t in resu:
                 print(t)
                 print("\n") 
-
+        if(datos["action"] == "d"):
+            print("finalizo el juego. Team ganador:")
+            print(datos["stadis"])
+            print("\n")
+            game_continue = False
         pass
 
         

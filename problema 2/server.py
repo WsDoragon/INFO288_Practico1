@@ -14,13 +14,14 @@ from functions import get_index
 
 
 def game(equipos,jugadores):
-    while True:
+    game_continue = True
+    while game_continue:
         for x in equipos:
             for y in x.players:
                 sendFeedback(feedback,"r",1,"server",0,"",(y.ip,y.port))
             time.sleep(10) #en main todos los jugadores a los que les llego el msj deberian enviar sus dados y ser sumados
             while(x.played < len(x.players)):
-                time.sleep(5)
+                time.sleep(3)
                 print("esperando...")
             x.played = 0
         
@@ -32,14 +33,26 @@ def game(equipos,jugadores):
         for x in equipos:
             for y in x.players:
                 sendFeedback(feedback,"s",1,"server",0,msj,(y.ip,y.port))
+            if(x.points >= 15):
+                 game_continue = False
+                 winner:id = x.id
         
         #print puntajes en terminal
         print("\n")
         for x in equipos:
              print(f"Team: {x.id} - Points: {x.getPoints()} \n")
 
-        time.sleep(7)
-        print(msj)
+        time.sleep(2)
+
+        if (not game_continue):
+            for x in equipos:
+                for y in x.players:
+                    sendFeedback(feedback,"d",1,"server",0,winner,(y.ip,y.port))
+             #enviar mensaje de final de partido y ganador
+             
+
+        #print(msj)
+    print(f"finalizó la partida - reiniciar server para iniciar una nueva - gano team: {winner}")
              
 
 def sendFeedback(feedback,act,stat,nick,ndice,stadis,target):
