@@ -35,10 +35,17 @@ class Team:
         self.played = 0
     
     def playersCount(self):
-        return f"T:{self.id} pp:{len(self.players)}+"
+        return(len(self.players))
         
     def getPoints(self):
         return self.points
+    
+    def displayJ(self):
+        if(len(self.players) == 0):
+            print(f"equipo:{id} vacio")
+        else:
+            for x in self.players:
+                print(f"jugador ip:{x.ip} port:{x.port}")
         
     
     

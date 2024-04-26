@@ -79,6 +79,7 @@ while True:
         ini_demon = False
 
     if not is_connected:
+        #print("1")
         data["action"] = "c"
         json_data = json.dumps(data)
         client_socket.sendto(json_data.encode('utf-8'), (server_host, server_port))
@@ -92,6 +93,7 @@ while True:
             is_connected = True
     
     if not has_info and is_connected:
+        #print("2")
         data["action"] = "t"
         json_data = json.dumps(data)
         client_socket.sendto(json_data.encode('utf-8'), (server_host, server_port))
@@ -108,6 +110,7 @@ while True:
         has_info = True
 
     if not has_elected and is_connected:
+        #print("3")
         data["action"] = "m"
         elec = int(input("opcion: "))
         data["teamId"] = elec
@@ -120,19 +123,27 @@ while True:
         if(getFeedback(colaMsj,"m")):
             print("conexion exitosa! \n")
             has_elected = True
+        time.sleep(7)
     
     if(not colaMsj.empty()):
+        #print("4")
         datos = colaMsj.get()
         if(datos["action"] == "r"): #enviar dado girado
+            #print("5")
             data["action"] = "r"
             data["Dice"] = random.randint(1, 6)
+            a = int(input("envia dado (pone un int): ")) #ingresa un int random asdasdsa
             json_data = json.dumps(data)
             client_socket.sendto(json_data.encode('utf-8'), (server_host, server_port))
             print("se envio el dado!")
             #verificar accion
         if(datos["action"] == "s"):
-            print(datos["stadis"])
-            print("\n")
+            #print("6")
+            resu = datos["stadis"].split("+")
+            for t in resu:
+                print(t)
+                print("\n") 
+
         pass
 
         

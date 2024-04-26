@@ -27,15 +27,17 @@ def game(equipos,jugadores):
         #enviar puntajes
         msj = ""
         for t in equipos:
-             msj += str(t.id)
-             msj += "="
-             msj += str(t.getPoints())
-             msj += " | "
+             msj += f"Team: {t.id} - Points {t.getPoints()} +"
         
         for x in equipos:
             for y in x.players:
                 sendFeedback(feedback,"s",1,"server",0,msj,(y.ip,y.port))
         
+        #print puntajes en terminal
+        print("\n")
+        for x in equipos:
+             print(f"Team: {x.id} - Points: {x.getPoints()} \n")
+
         time.sleep(7)
         print(msj)
              
@@ -90,7 +92,7 @@ while True:
     data, addr = server_socket.recvfrom(1024)  # 1024 es el tamaño máximo de datos que se puede recibir
     json_data = data.decode('utf-8')
     received_data = json.loads(json_data)# Convertir la cadena JSON de vuelta a un diccionario
-    print(received_data)
+    #print(received_data)
 
     if demon_game and verificar_equipos(equipos):
             game_thread = threading.Thread(target=game,kwargs={"equipos":equipos, "jugadores": jugadores})
@@ -109,13 +111,13 @@ while True:
          #enviar info de los teams
          msj = ""
          for x in equipos:
-              msj += x.playersCount()
+            msj+= f"E:{x.id} - P:{x.playersCount()} +"
          sendFeedback(feedback,"t",1,"you",0,msj,addr)
     
     if received_data["action"] == "m":
-         print("aki")
+         #print("aki")
          j = get_index(addr[0],addr[1],jugadores)
-         print(type(received_data["teamId"]))
+         #print(type(received_data["teamId"]))
          if received_data["teamId"] > len(equipos)-1:
               new_team = Team(received_data["teamId"])
               new_team.players.append(jugadores[j])
@@ -126,6 +128,7 @@ while True:
          if (firstConex):
             demon_game = True
             firstConex = False
+         sendFeedback(feedback,"m",1,"you",0,"",addr)
     
     if received_data["action"] == "r":
          #j = get_index(addr[0],addr[1],jugadores)
@@ -134,17 +137,16 @@ while True:
          equipos[jt].points += result
          equipos[jt].played += 1
          
-        
+    """
     print("Lista de clientes conectados por IP:")
     for cliente in jugadores:
         print(f"IP: {cliente.ip}")
         print(f"Puerto: {cliente.port}")
         print("---------------")  # Separador entre clientes
-
-    serverStats = ""
+    """        
+    print("\n")
     for x in equipos:
-        serverStats += x.playersCount()
-    print(serverStats.split("+"))
+         print(f"Team:{x.id} - Players:{x.playersCount()} \n")
     
 # Cerrar el socket al finalizar
 server_socket.close()
