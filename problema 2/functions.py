@@ -14,10 +14,14 @@ def get_index(ip, puerto, lista_clientes):
     return -1  # No se encontró ningún cliente con la misma IP y puerto, retorna -1
 
 def verificar_equipos(lista_equipos):
+
     count = 0
     for equipo in lista_equipos:
+        
         if len(equipo.players) > 0:
             count += 1
-            if count == 1:
+            if count == 2:
+                
                 return True
+    
     return False

@@ -14,6 +14,7 @@ from functions import get_index
 
 
 def game(equipos,jugadores):
+    print("Inicio el partido!")
     game_continue = True
     while game_continue:
         for x in equipos:
@@ -107,12 +108,7 @@ while True:
     received_data = json.loads(json_data)# Convertir la cadena JSON de vuelta a un diccionario
     #print(received_data)
 
-    if demon_game and verificar_equipos(equipos):
-            game_thread = threading.Thread(target=game,kwargs={"equipos":equipos, "jugadores": jugadores})
-            game_thread.daemon = True  
-            game_thread.start()
-            demon_game = False
-            pass
+    
         
     if received_data["action"] == "c" and not has_conex(addr[0],addr[1],jugadores):
             new_player = Player(received_data["nickName"],addr[0],addr[1],'192.168.1.26',20001,idCounter)
@@ -149,6 +145,13 @@ while True:
          result = received_data["Dice"]
          equipos[jt].points += result
          equipos[jt].played += 1
+    
+    if demon_game and verificar_equipos(equipos):
+            game_thread = threading.Thread(target=game,kwargs={"equipos":equipos, "jugadores": jugadores})
+            game_thread.daemon = True  
+            game_thread.start()
+            demon_game = False
+            pass
          
     """
     print("Lista de clientes conectados por IP:")
