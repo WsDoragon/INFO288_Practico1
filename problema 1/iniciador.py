@@ -25,7 +25,7 @@ for i in env_files:
     execute_cmd = f"python slave1.py ./slave_envs/{i}"
 
     # Obtener la ruta absoluta del archivo slave.py
-    file_path = os.path.abspath(f"slave1.py")
+    file_path = os.path.abspath(f"slave.py")
 
     # Abrir una terminal de comandos, activar el entorno Conda y ejecutar los comandos
     os.system(f"start cmd /k \"{activate_cmd} && cd /D {os.path.dirname(file_path)} && {execute_cmd}\"")
