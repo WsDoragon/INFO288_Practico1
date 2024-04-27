@@ -23,6 +23,7 @@ args = parser.parse_args()
 # Funcion que revisa la cola de mensajes y retorna positvo o afirmativo
 def getFeedback(cola,accion):
     datos = cola.get()
+    #print(datos)
     if(datos["status"] == 0 and datos["action"] == accion):
         return False
     elif(datos["status"] == 1 and datos["action"] == accion):
@@ -34,6 +35,7 @@ def getFeedback(cola,accion):
 def recibir_mensajes():
     while True:
         try:
+            print("respuesta: ")
             message, _ = client_socket.recvfrom(1024)
             json_data = message.decode('utf-8')
             received_data = json.loads(json_data)
@@ -71,6 +73,7 @@ has_info = False
 has_elected = False
 waiting_time = (random.randint(500, 5000))/1000
 game_continue = True
+maxDiceNumber = 20
 
 # --------- flujo principal --------------
 
@@ -106,6 +109,7 @@ while game_continue:
             time.sleep(waiting_time)
         
         datos = colaMsj.get()
+        maxDiceNumber = int(datos["maxDice"])
         options = datos["stadis"].split("+")
         options[-1] = ":Nuevo"
         print("elige un equipo:\n")
@@ -139,7 +143,7 @@ while game_continue:
         # Envio de dado
         if(datos["action"] == "r"): 
             data["action"] = "r"
-            t = random.randint(1, 20)
+            t = random.randint(1, maxDiceNumber)
             data["Dice"] = t
             #a = int(input("envia dado (pone un int): ")) #ingresa un int random asdasdsa
             a = input("Enter para lanzar y enviar dado... ") #ingresa un int random asdasdsa

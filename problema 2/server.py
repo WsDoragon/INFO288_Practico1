@@ -20,7 +20,7 @@ from functions import clear_terminal
 
 
 parser = argparse.ArgumentParser(description='Server script with parameters.')
-parser.add_argument('--env', type=str, default='envserver', help='Server environment file name')
+parser.add_argument('--env', type=str, default='.envserver', help='Server environment file name')
 args = parser.parse_args()
 
 load_dotenv(args.env)
@@ -117,6 +117,7 @@ def sendFeedback(feedback,act,stat,nick,ndice,stadis,target):
     feedback["dice"] = ndice
     feedback["stadis"] = stadis
     json_data = json.dumps(feedback)
+    #print(f"enviando mensaje: {json_data} a {target}")
     server_socket.sendto(json_data.encode('utf-8'), target)
 
 # crear conexion
@@ -145,8 +146,8 @@ equipos = []
 equipos.append(pt)
 equipos.append(st)
 
-nEquiposMax = 3 # maximo de equipos en servidor
-maxPlayerPerTeam = 2 # maximo de jugadores por equipo
+nEquiposMax = int(os.getenv("MAX_TEAMS")) # maximo de equipos en servidor
+maxPlayerPerTeam = int(os.getenv("MAX_PER_TEAM")) # maximo de jugadores por equipo
 
 firstConex = True
 idCounter = 0
@@ -157,6 +158,7 @@ feedback = { # Estructura de los mensajes
   "status": 0, 
   "nickName": "Server",
   "Dice": 0,
+  "maxDice": os.getenv("MAX_DICE"),
   "teamId":0,
   "stadis": "ss"
 }
@@ -174,7 +176,7 @@ while True:
 
     # Recibir e inscribir jugador en el servidor -> se guarda en lista "jugadores"
     if received_data["action"] == "c" and not has_conex(addr[0],addr[1],jugadores):
-            new_player = Player(received_data["nickName"],addr[0],addr[1],'192.168.1.26',20001,idCounter)
+            new_player = Player(received_data["nickName"],addr[0],addr[1],host,port,idCounter)
             jugadores.append(new_player)
             idCounter += 1            
             sendFeedback(feedback,"c",1,"you",0,"",addr)
