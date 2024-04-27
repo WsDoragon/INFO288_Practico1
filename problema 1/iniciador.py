@@ -22,7 +22,7 @@ for env_file in env_files:
     print(env_file, "encontrado")
 for i in env_files:
     # Comando para ejecutar el archivo slave.py
-    execute_cmd = f"python slave1.py ./slave_envs/{i}"
+    execute_cmd = f"python slave.py ./slave_envs/{i}"
 
     # Obtener la ruta absoluta del archivo slave.py
     file_path = os.path.abspath(f"slave.py")
