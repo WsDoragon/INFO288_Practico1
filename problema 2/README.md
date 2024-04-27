@@ -23,10 +23,13 @@ Se propuso la creacion de un juego en el que 2 o mas equipos compiten para ver q
 ## Ejecucion
 ### Correr server.py:
 * python3 server.py --env "Nombre archivo .env"
-* ejemplo: python3 server.py --env .envserver
+* ejemplo:
+    ```CMD
+    python3 server.py --env .envserver
+    ``` 
 
 ### Correr client.py:
-* ``python3 client.py --host "direccion ip servidor" --port "puerto destino" --nick "nombre del jugador"``
+* python3 client.py --host "direccion ip servidor" --port "puerto destino" --nick "nombre del jugador"
 * Ejemplo:
     ```CMD
     python3 client.py --host 192.168.1.26 --port 20002 --nick Leoxz98

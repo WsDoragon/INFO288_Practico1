@@ -110,4 +110,4 @@ Este sistema esta diseñado para ser utilizado mediante un navegador web o consu
     * Mediante esta url se realiza una peticion para consultar a nodos especificos, obteniendo como resultado los elementos manejados por cada uno de esos nodos y entregandolo al usuario.
     * Ejemplo de uso: `http://localhost:5000/query?tipo_doc=tesis+general+audio`
 
-
+* Considerar que las peticiones de metodo GET no pueden contener espacios en la peticion. 
