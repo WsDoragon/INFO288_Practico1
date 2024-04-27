@@ -7,6 +7,8 @@ import threading
 import argparse
 import os
 
+from dotenv import load_dotenv
+
 from clases import Player
 from clases import Team
 
@@ -16,12 +18,12 @@ from functions import get_index
 from functions import clear_terminal
 
 
+
 parser = argparse.ArgumentParser(description='Server script with parameters.')
-parser.add_argument('--host', type=str, default='192.168.1.26', help='Server host address')
-parser.add_argument('--port', type=int, default=20002, help='Server port number')
+parser.add_argument('--env', type=str, default='envserver', help='Server environment file name')
 args = parser.parse_args()
 
-
+load_dotenv(args.env)
 
 # Hilo (thread) que maneja las votaciones - Las votaciones van en FIFO dentro de la cola waitingConnect
 def votes_management(equipos,jugadores):
@@ -83,7 +85,7 @@ def game(equipos,jugadores):
         for x in equipos:
             for y in x.players:
                 sendFeedback(feedback,"s",1,"server",0,msj,(y.ip,y.port))
-            if(x.points >= 100): # Condicion de ganar el partido
+            if(x.points >= puntuacionLimite): # Condicion de ganar el partido
                  game_continue = False
                  winner:id = x.id
         
@@ -121,8 +123,9 @@ def sendFeedback(feedback,act,stat,nick,ndice,stadis,target):
 
 #host = '192.168.1.26'  
 #port = 20002
-host = args.host
-port = args.port
+host = os.getenv('HOST')
+port = int(os.getenv('PORT'))
+puntuacionLimite = int(os.getenv('MAX_POINTS'))
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 server_socket.bind((host, port))
