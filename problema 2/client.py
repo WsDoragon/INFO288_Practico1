@@ -4,6 +4,9 @@ import random
 import threading
 import queue
 import time
+import sys
+
+client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 
 def getFeedback(cola,accion):
@@ -24,6 +27,8 @@ def sendMsj(msj):
 def recibir_mensajes():
     while True:
         try:
+            #print("recibiendo mensajes")
+            #print(client_socket or "no hay socket")
             message, _ = client_socket.recvfrom(1024)
             json_data = message.decode('utf-8')
             received_data = json.loads(json_data)
@@ -34,9 +39,9 @@ def recibir_mensajes():
             break
 
 #  ------Varibles-------
-server_host = '192.168.1.26' 
+server_host = '192.168.1.5' 
 server_port = 20001
-client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+#client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 
 data = {
@@ -169,6 +174,7 @@ while game_continue:
             print(datos["stadis"])
             print("\n")
             game_continue = False
+            sys.exit()
         pass
 
         

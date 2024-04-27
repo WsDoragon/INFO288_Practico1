@@ -102,7 +102,7 @@ def sendFeedback(feedback,act,stat,nick,ndice,stadis,target):
     server_socket.sendto(json_data.encode('utf-8'), target)
 
 # crear conexion
-host = '192.168.1.26'  
+host = '192.168.1.5'  
 port = 20001
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 server_socket.bind((host, port))
@@ -161,30 +161,32 @@ while True:
          sendFeedback(feedback,"t",1,"you",0,msj,addr)
     
     if received_data["action"] == "m":
-         #print("aki")
-         j = get_index(addr[0],addr[1],jugadores)
-         #print(type(received_data["teamId"]))
-         if received_data["teamId"] > len(equipos)-1:
+          #print("aki")
+          j = get_index(addr[0],addr[1],jugadores)
+          #print(type(received_data["teamId"]))
+          if received_data["teamId"] > len(equipos)-1:
               new_team = Team(received_data["teamId"])
-              new_team.players.append(jugadores[j])
+              #new_team.players.append(jugadores[j])
               equipos.append(new_team)
-         else:
-              if (len(equipos[received_data["teamId"]].players)>0):
-                   #votes_management(equipos[received_data["teamId"]],jugadores[j])
-                   u = [received_data["teamId"],addr,j]
-                   waitingConnect.put(u)
-                   if(not demon_vote):
-                        vote_thread = threading.Thread(target=votes_management,kwargs={"equipos":equipos, "jugadores": jugadores})
-                        vote_thread.daemon = True  
-                        vote_thread.start()
-                        demon_vote = True                        
-              else:
-                   equipos[received_data["teamId"]].players.append(jugadores[j])
-                   sendFeedback(feedback,"m",1,"you",0,"",addr)
+              #print("###############\nIntregranres del equipo: \n###############")
+              #print(equipos[received_data["teamId"]].players)
          
-         if (firstConex):
-            demon_game = True
-            firstConex = False
+          if (len(equipos[received_data["teamId"]].players)>0):
+               #votes_management(equipos[received_data["teamId"]],jugadores[j])
+               u = [received_data["teamId"],addr,j]
+               waitingConnect.put(u)
+               if(not demon_vote):
+                    vote_thread = threading.Thread(target=votes_management,kwargs={"equipos":equipos, "jugadores": jugadores})
+                    vote_thread.daemon = True  
+                    vote_thread.start()
+                    demon_vote = True                        
+          else:
+              equipos[received_data["teamId"]].players.append(jugadores[j])
+              sendFeedback(feedback,"m",1,"you",0,"",addr)
+         
+          if (firstConex):
+               demon_game = True
+               firstConex = False
          
     
     if received_data["action"] == "r":
