@@ -12,6 +12,42 @@ from functions import has_conex
 from functions import verificar_equipos
 from functions import get_index
 
+def votes_management(equipos,jugadores):
+     global waitingConnect
+     while True:
+          if(not waitingConnect.empty()):
+               finish = False
+               #logica de votación u = [received_data["teamId"],addr]
+               info = waitingConnect.get()
+               gente = len(equipos[info[0]].players)
+               for x in equipos[info[0]].players:
+                sendFeedback(feedback,"v",1,"server",0,"",(x.ip,x.port))
+               time.sleep(3)
+               while(not finish):
+                    hg = 0
+                    positive = 0
+                    for y in equipos[info[0]].players:
+                         if (y.voted == 1):
+                            hg += 1
+                         if (y.aprove == 1):
+                            positive += 1
+
+                    if(gente == hg):
+                        finish = True
+                        if(positive == gente):
+                            sendFeedback(feedback,"m",1,"server",1,"",info[1])                    
+                            #meterlo al team
+                            equipos[info[0]].players.append(jugadores[info[2]])
+                        else:
+                            sendFeedback(feedback,"m",0,"server",0,"",info[1])
+                         
+                    time.sleep(1)
+               for y in equipos[info[0]].players:
+                y.voted = 3
+                y.aprove = 3
+          else:
+               time.sleep(5)
+     
 
 def game(equipos,jugadores):
     print("Inicio el partido!")
@@ -76,6 +112,8 @@ MAX_USERS_PER_IP = 64
 jugadores = []
 waitingConnect = Queue()
 demon_game = False
+flag_votacion = False
+demon_vote = False
 
 pt = Team(0)
 st = Team(1)
@@ -108,7 +146,6 @@ while True:
     received_data = json.loads(json_data)# Convertir la cadena JSON de vuelta a un diccionario
     #print(received_data)
 
-    
         
     if received_data["action"] == "c" and not has_conex(addr[0],addr[1],jugadores):
             new_player = Player(received_data["nickName"],addr[0],addr[1],'192.168.1.26',20001,idCounter)
@@ -132,26 +169,52 @@ while True:
               new_team.players.append(jugadores[j])
               equipos.append(new_team)
          else:
-              equipos[received_data["teamId"]].players.append(jugadores[j])
+              if (len(equipos[received_data["teamId"]].players)>0):
+                   #votes_management(equipos[received_data["teamId"]],jugadores[j])
+                   u = [received_data["teamId"],addr,j]
+                   waitingConnect.put(u)
+                   if(not demon_vote):
+                        vote_thread = threading.Thread(target=votes_management,kwargs={"equipos":equipos, "jugadores": jugadores})
+                        vote_thread.daemon = True  
+                        vote_thread.start()
+                        demon_vote = True                        
+              else:
+                   equipos[received_data["teamId"]].players.append(jugadores[j])
+                   sendFeedback(feedback,"m",1,"you",0,"",addr)
          
          if (firstConex):
             demon_game = True
             firstConex = False
-         sendFeedback(feedback,"m",1,"you",0,"",addr)
+         
     
     if received_data["action"] == "r":
-         #j = get_index(addr[0],addr[1],jugadores)
+         #
          jt = received_data["teamId"]
          result = received_data["Dice"]
          equipos[jt].points += result
          equipos[jt].played += 1
-    
+
+    if received_data["action"] == "v":
+         j = get_index(addr[0],addr[1],equipos[received_data["teamId"]].players)
+         print("xd  ")
+         print(j)
+         if received_data["status"] == 1:
+              equipos[received_data["teamId"]].players[j].aprove = 1
+              pass
+         else:
+              equipos[received_data["teamId"]].players[j].aprove = 0
+              pass
+         equipos[received_data["teamId"]].players[j].voted = 1
+              
     if demon_game and verificar_equipos(equipos):
             game_thread = threading.Thread(target=game,kwargs={"equipos":equipos, "jugadores": jugadores})
             game_thread.daemon = True  
             game_thread.start()
             demon_game = False
             pass
+    
+    if(demon_vote):
+         pass
          
     """
     print("Lista de clientes conectados por IP:")

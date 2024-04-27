@@ -123,6 +123,12 @@ while game_continue:
         if(getFeedback(colaMsj,"m")):
             print("conexion exitosa! \n")
             has_elected = True
+        else:
+            print("te rechazron manito")
+            has_info = False
+        #aqui un else que getfeedback retorne false
+        #has_elect queda en false
+        #se imprime un msj de rechazo!
         time.sleep(7)
     
     if(not colaMsj.empty()):
@@ -142,7 +148,22 @@ while game_continue:
             resu = datos["stadis"].split("+")
             for t in resu:
                 print(t)
-                print("\n") 
+                print("\n")
+
+        if(datos["action"] == "v"):
+            #print(f"player{datos["stadis"]} quiere unirse al team{elec} \n")
+            print("player: ")
+            print(datos["stadis"])
+            print(f" quiere unirse al team{elec} \n")
+            response = input("y/n: ")
+            data["action"] = "v"
+            if(response == "y"):
+                data["status"] = 1
+            else:
+                data["status"] = 0
+            json_data = json.dumps(data)
+            client_socket.sendto(json_data.encode('utf-8'), (server_host, server_port))
+
         if(datos["action"] == "d"):
             print("finalizo el juego. Team ganador:")
             print(datos["stadis"])

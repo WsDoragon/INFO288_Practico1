@@ -13,6 +13,8 @@ class Player:
         self.nDice = 0
         self.hasTeam = False
         self.teamId = 0
+        self.aprove = 3
+        self.voted = 3
 
     #posiblemente esto se borre
     def rollDice(self):
