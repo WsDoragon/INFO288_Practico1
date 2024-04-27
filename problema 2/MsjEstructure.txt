@@ -1,0 +1,39 @@
+Definicion de las estructuras de los distintos mensajes que habrá 
+
+un solo string separado por "|" para hacer split
+
+Mensaje 
+
+"""
+definicion de mensaje
+
+action: (c)onectar, (t)eam-elegir,(m)akeTeam o elegir , (r)oll dado,(s)tadistic ,(d)isconect
+status: 0 false 1 true: bug o no
+nick name: nombre
+dice: resultado del dado
+teamId: id del equipo al que pertenece
+
+"""
+
+feedback = {
+  "action": "c, t ,m , r, s, d,v"
+  "status": 0, 
+  "nickName": "Server",
+  "Dice": 0,
+  "teamId":0
+  "stadis":0
+}
+
+note_leo 
+
+git add .
+git commit -m "msj"
+git push origin "LeoBranch"
+
+
+
+corrrer cliente
+  python3 client.py --host 192.168.1.26 --port 20002 --nick player_name
+  
+correr server
+  python3 server.py --host 192.168.1.26 --port 20002 
