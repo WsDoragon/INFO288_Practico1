@@ -16,7 +16,7 @@ teamId: id del equipo al que pertenece
 """
 
 feedback = {
-  "action": "c, t ,m , r, s, d", 
+  "action": "c, t ,m , r, s, d,v"
   "status": 0, 
   "nickName": "Server",
   "Dice": 0,
@@ -29,3 +29,11 @@ note_leo
 git add .
 git commit -m "msj"
 git push origin "LeoBranch"
+
+
+
+corrrer cliente
+  python3 client.py --host 192.168.1.26 --port 20002 --nick player_name
+  
+correr server
+  python3 server.py --host 192.168.1.26 --port 20002 
