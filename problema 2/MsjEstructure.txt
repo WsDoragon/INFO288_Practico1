@@ -30,8 +30,6 @@ git add .
 git commit -m "msj"
 git push origin "LeoBranch"
 
-
-
 corrrer cliente
   python3 client.py --host 192.168.1.26 --port 20002 --nick player_name
   
