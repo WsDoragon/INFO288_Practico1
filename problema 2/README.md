@@ -18,6 +18,7 @@ Se propuso la creacion de un juego en el que 2 o mas equipos compiten para ver q
     * threading
     * argparse
     * os
+    * python-dotenv (``pip install python-dotenv``)
 
 ## Ejecucion
 ### Correr server.py:
@@ -38,6 +39,9 @@ Se utilizan variables de entorno para configurar el servidor.
 | HOST | Direccion ip maquina |
 | PORT | Puerto sobre el que escuchara la maquina |
 | MAX_POINTS | Limite de puntuacion que tendra la partida |
+| MAX_TEAMS | Limite de equipos que se podran crear en la partida, minimo 2 |
+| MAX_PER_TEAM | Limite de jugadores por equipo |
+| MAX_DICE | Dado que el servidor define para los jugadores |
 
 ## Consideraciones generales:
 * No hay manejo de excepciones (ingresar y realizar operacion segun lo que se pide exactamente)
