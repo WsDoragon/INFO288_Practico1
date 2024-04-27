@@ -101,7 +101,7 @@ def test():
         resultados = []
         for esclavo in esclavos:
             print(esclavo)
-            response = requests.get(esclavo[1] + '/searchTitulo', params={'titulo': titulo})
+            response = requests.get("http://" + esclavo[1] + '/searchTitulo', params={'titulo': titulo})
             if response.status_code == 200:
                 resultados.extend(response.json())
         return jsonify(resultados)
