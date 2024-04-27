@@ -145,6 +145,8 @@ equipos = []
 equipos.append(pt)
 equipos.append(st)
 
+nEquiposMax = 3 # maximo de equipos en servidor
+maxPlayerPerTeam = 2 # maximo de jugadores por equipo
 
 firstConex = True
 idCounter = 0
@@ -188,25 +190,34 @@ while True:
     if received_data["action"] == "m":
           j = get_index(addr[0],addr[1],jugadores)
 
-          # Crear un nuevo equipo
-          if received_data["teamId"] > len(equipos)-1:
-              new_team = Team(received_data["teamId"])
-              equipos.append(new_team)
-         
-         # Entra a votacion de los intengrantes de un equipo en dejarlo unirse
-          if (len(equipos[received_data["teamId"]].players)>0):
-               u = [received_data["teamId"],addr,j]
-               waitingConnect.put(u)
-               if(not demon_vote):
-                    vote_thread = threading.Thread(target=votes_management,kwargs={"equipos":equipos, "jugadores": jugadores})
-                    vote_thread.daemon = True  
-                    vote_thread.start()
-                    demon_vote = True                        
-          
-          # Ee une ya que el Equipo esta vacio
+
+          if received_data["teamId"] >= nEquiposMax:
+              sendFeedback(feedback,"m",0,"you",0,"",addr)
           else:
-              equipos[received_data["teamId"]].players.append(jugadores[j])
-              sendFeedback(feedback,"m",1,"you",0,"",addr)
+          # Crear un nuevo equipo
+               if received_data["teamId"] > len(equipos)-1:
+                    new_team = Team(received_data["teamId"])
+                    equipos.append(new_team)
+          
+          # Entra a votacion de los intengrantes de un equipo en dejarlo unirse
+               if (len(equipos[received_data["teamId"]].players)>0) and (len(equipos[received_data["teamId"]].players) + 1 <= maxPlayerPerTeam):
+                    u = [received_data["teamId"],addr,j]
+                    waitingConnect.put(u)
+                    if(not demon_vote):
+                         vote_thread = threading.Thread(target=votes_management,kwargs={"equipos":equipos, "jugadores": jugadores})
+                         vote_thread.daemon = True  
+                         vote_thread.start()
+                         demon_vote = True                        
+               
+               
+               elif (len(equipos[received_data["teamId"]].players) + 1 > maxPlayerPerTeam):
+                    sendFeedback(feedback,"m",0,"you",0,"",addr)
+                    pass
+               
+               # Ee une ya que el Equipo esta vacio
+               else:
+                    equipos[received_data["teamId"]].players.append(jugadores[j])
+                    sendFeedback(feedback,"m",1,"you",0,"",addr)
          
           if (firstConex):
                demon_game = True

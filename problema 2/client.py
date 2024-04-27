@@ -128,7 +128,7 @@ while game_continue:
             print("\n conexion exitosa! \n")
             has_elected = True
         else:
-            print(f" \n Los integrantes de equipo: {elec} te rechazaron \n")
+            print(f" \n Error al unirse al equipo: {elec}\n")
             has_info = False
         time.sleep(5)
     
