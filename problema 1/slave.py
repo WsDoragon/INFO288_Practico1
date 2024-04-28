@@ -70,4 +70,4 @@ def insertDoc():
 if __name__ == '__main__':
     response = requests.post('http://' + os.getenv("NODO_MAESTRO") + '/registrarNodo', params={'url': os.getenv('NODO_SLAVE'), 'port': os.getenv('PORT'), 'tipo_nodo': os.getenv('TIPO_NODO')})
     print(response.json())    
-    app.run(debug=True, port=os.getenv('PORT'))
+    app.run(debug=True, host='0.0.0.0', port=os.getenv('PORT'))
