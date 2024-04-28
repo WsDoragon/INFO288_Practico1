@@ -60,53 +60,62 @@ def insert():
 
 @app.route('/query')
 def test():
-    tipo_doc = request.args.get('tipo_doc')
-    titulo = request.args.get('titulo')
-    #print(titulo)
-    if tipo_doc:
-        print("Query de tipo: ",tipo_doc)
-        resultados = []
-        tiposDocs = tipo_doc.split(' ')
-        for tipo in tiposDocs:
+    try:
+        tipo_doc = request.args.get('tipo_doc')
+        titulo = request.args.get('titulo')
+        #print(titulo)
+        if tipo_doc:
+            print("Query de tipo: ",tipo_doc)
+            resultados = []
+            tiposDocs = tipo_doc.split(' ')
+            for tipo in tiposDocs:
+                mycursor.execute("SELECT nombre, nodoDestino FROM tipos WHERE nombre = %s", (tipo.lower(),))
+                nodo = mycursor.fetchone()
+                print(nodo)
+                if nodo:
+                    response = requests.get("http://" + nodo[1] + '/searchDocs', params={'tipo_doc': tipo})
+                    if response.status_code == 200 and response.json() != []:
+                        resultados.extend(response.json())
+                    
+                    else:
+                        resultados.append([{"Hint": 'Base de datos se encuentra vacia', "tipo": tipo, "status": "200 - OK"}])
+                else:
+                    resultados.append([{"Error": 'Tipo de documento no encontrado', "tipo": tipo, "status": "404 - Not Found"}])
+            return jsonify(resultados)
+        
+    
+            """
             mycursor.execute("SELECT nombre, nodoDestino FROM tipos WHERE nombre = %s", (tipo.lower(),))
-            nodo = mycursor.fetchone()
-            #print(nodo[0])
-            if nodo:
-                response = requests.get("http://" + nodo[1] + '/searchDocs', params={'tipo_doc': tipo})
+                    esclavoTipo = mycursor.fetchone()
+                    print(esclavoTipo)
+                    if esclavoTipo:
+                        esclavo = esclavoTipo[1]
+                        response = requests.get(esclavo + '/searchDocs', params={'tipo_doc': tipo.lower()})
+                        if response.status_code == 200:
+                            return jsonify(response.json())
+                        else:
+                            return jsonify({"Error": 'Error en la consulta'})
+                    else:
+                        return jsonify({"Error": 'Tipo de documento no encontrado'})
+            """      
+
+            
+        elif titulo:
+            mycursor.execute("SELECT nombre, nodoDestino FROM tipos")
+            esclavos = mycursor.fetchall()
+            resultados = []
+            for esclavo in esclavos:
+                print(esclavo)
+                response = requests.get("http://" + esclavo[1] + '/searchTitulo', params={'titulo': titulo})
                 if response.status_code == 200:
                     resultados.extend(response.json())
-            else:
-                resultados.append([{"Error": 'Tipo de documento no encontrado', "tipo": tipo, "status": "404 - Not Found"}])
-        return jsonify(resultados)
-    
-        """
-        mycursor.execute("SELECT nombre, nodoDestino FROM tipos WHERE nombre = %s", (tipo.lower(),))
-                esclavoTipo = mycursor.fetchone()
-                print(esclavoTipo)
-                if esclavoTipo:
-                    esclavo = esclavoTipo[1]
-                    response = requests.get(esclavo + '/searchDocs', params={'tipo_doc': tipo.lower()})
-                    if response.status_code == 200:
-                        return jsonify(response.json())
-                    else:
-                        return jsonify({"Error": 'Error en la consulta'})
-                else:
-                    return jsonify({"Error": 'Tipo de documento no encontrado'})
-        """      
-
+            return jsonify(resultados)
+        else:
+            return jsonify({"Error": 'No se especifico operacion'})
         
-    elif titulo:
-        mycursor.execute("SELECT nombre, nodoDestino FROM tipos")
-        esclavos = mycursor.fetchall()
-        resultados = []
-        for esclavo in esclavos:
-            print(esclavo)
-            response = requests.get("http://" + esclavo[1] + '/searchTitulo', params={'titulo': titulo})
-            if response.status_code == 200:
-                resultados.extend(response.json())
-        return jsonify(resultados)
-    else:
-        return jsonify({"Error": 'No se especifico operacion'})
+    except Exception as e:
+        return jsonify({"Error": str(e)})
+    
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
