@@ -1,7 +1,7 @@
 DB_NAME = "distribuidos1"
 DB_HOST = "localhost"
 DB_USER = "root"
-DB_PASS = "leonardo"
+DB_PASS = "a"
 DB_TABLE = "db4"
 NODO_MAESTRO = "localhost:5000"
 NODO_SLAVE = "localhost"
