@@ -30,12 +30,12 @@ myCursor = mydb.cursor()
 def testDocs():
     tipo_doc = request.args.get('tipo_doc')
     print(os.getenv('DB_TABLE'))
-    myCursor.execute(f'SELECT titulo, tipo, nodo FROM {os.getenv("DB_TABLE")}')
+    myCursor.execute(f'SELECT titulo, tipo, nodo, autor FROM {os.getenv("DB_TABLE")}')
     docs = myCursor.fetchall() # Obtenemos todos los documentos del nodo
     resultados = []
     for doc in docs: # Agregamos cada doc al resultado si es del tipo solicitado
         if doc[1] == tipo_doc:
-            resultados.append({"titulo": doc[0], "tipo": doc[1], "nodo": doc[2]}) 
+            resultados.append({"titulo": doc[0], "tipo": doc[1], "nodo": doc[2], "autor": doc[3]}) 
     return jsonify(resultados)
 
 # Ruta para buscar por palabras en titulo
