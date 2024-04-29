@@ -64,7 +64,7 @@ CREATE TABLE `db2` (
   `nodo` varchar(100) NOT NULL,
   `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -74,7 +74,9 @@ CREATE TABLE `db2` (
 LOCK TABLES `db2` WRITE;
 /*!40000 ALTER TABLE `db2` DISABLE KEYS */;
 INSERT INTO `db2` VALUES
-(5,'Hola Mundo!','Mundo','general','slaveGeneral','2024-04-23 15:10:51');
+(1,'Hola Mundo!','Mundo','general','slaveGeneral','2024-04-23 15:10:51'),
+(2,'Cotizacion gaming','Pedro Pedro','general','slaveGeneral','2024-04-23 15:10:51'),
+(3,'Tazas por el mundo','Edgardo Ramos','general','slaveGeneral','2024-04-23 15:10:51');
 /*!40000 ALTER TABLE `db2` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,12 +117,12 @@ DROP TABLE IF EXISTS `db4`;
 CREATE TABLE `db4` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` mediumtext NOT NULL,
-  `tipo` varchar(150) DEFAULT NULL,
   `autor` varchar(150) DEFAULT NULL,
+  `tipo` varchar(150) DEFAULT NULL,
   `nodo` varchar(100) NOT NULL,
   `createdAt` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -128,8 +130,11 @@ CREATE TABLE `db4` (
 --
 
 LOCK TABLES `db4` WRITE;
-/*!40000 ALTER TABLE `db4` DISABLE KEYS */;
-/*!40000 ALTER TABLE `db4` ENABLE KEYS */;
+/*!40000 ALTER TABLE `db2` DISABLE KEYS */;
+INSERT INTO `db4` VALUES
+(1,'Conferencia PC Gaming','Juan Perez','audio','slaveAudio','2024-04-23 15:10:51'),
+(2,'Audio Whatsapp 12345','Anonymous','audio','slaveAudio','2024-04-23 15:10:51');
+/*!40000 ALTER TABLE `db2` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
