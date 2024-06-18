@@ -1,9 +1,9 @@
 import Pyro4
 from datetime import datetime
 
-def generate_log_entry(action, details):
+def generate_log_entry(action, inicio, fin, player, team):
     timestamp = datetime.now().isoformat()
-    return f"{timestamp} - {action} - {details}"
+    return f"{timestamp} | {action} | {inicio} | {fin} | {player} | {team}"
 
 def main():
     # Connect to the name server
@@ -14,8 +14,11 @@ def main():
     print("Connected to the Log Server.")
     while True:
         action = input("Enter the action: ")
-        details = input("Enter the details: ")
-        log_entry = generate_log_entry(action, details)
+        inicio = input("Enter the start time: ")
+        fin = input("Enter the end time: ")
+        player = input("Enter the player name: ")
+        team = input("Enter the team name: ")
+        log_entry = generate_log_entry(action, inicio, fin, player, team)
         response = log_server.add_log(log_entry)
         print(response)
         cont = input("Do you want to add another log? (yes/no): ")

@@ -7,6 +7,8 @@ import time
 import sys
 import argparse
 import os
+import Pyro4
+from datetime import datetime
 
 from functions import clear_terminal
 
@@ -19,6 +21,10 @@ parser.add_argument('--host', type=str, default='192.168.1.26', help='Server hos
 parser.add_argument('--port', type=int, default=20001, help='Server port number')
 parser.add_argument('--nick', type=str, default="player", help='Player nick name')
 args = parser.parse_args()
+
+def generate_log_entry(action, inicio, fin, player, team, extra):
+    timestamp = datetime.now().isoformat()
+    return f"{timestamp} | {action} | {inicio} | {fin} | {player} | {team} | {extra} |"
 
 # Funcion que revisa la cola de mensajes y retorna positvo o afirmativo
 def getFeedback(cola,accion):
@@ -44,6 +50,19 @@ def recibir_mensajes():
             print(f"Error al recibir mensajes del servidor: {e}")
             break
 
+def send_logs():
+    # Connect to the name server
+    ns = Pyro4.locateNS()
+    uri = ns.lookup("example.logserver")
+    log_server = Pyro4.Proxy(uri)  # Create a proxy for the log server object
+    while True:
+        if(not colaLogs.empty()):
+            log_entry = colaLogs.get()
+            response = log_server.add_log(log_entry)
+        else:
+            pass
+
+
 #  ------Varibles-------
 #server_host = '192.168.1.26' 
 #server_port = 20001
@@ -64,6 +83,7 @@ data = { # Estructura de los mensajes
 
 json_data = json.dumps(data)
 colaMsj = queue.Queue()
+colaLogs = queue.Queue()
 
 # ---------- variables de control -------------
 
@@ -79,14 +99,20 @@ maxDiceNumber = 20
 
 while game_continue:
 
-    if ini_demon:# El hilo se ejecutará en segundo plano
+    if ini_demon:# Los hilos se ejecutarán en segundo plano
         receiving_thread = threading.Thread(target=recibir_mensajes)
         receiving_thread.daemon = True  
         receiving_thread.start()
+
+        sending_thread = threading.Thread(target=send_logs)
+        sending_thread.daemon = True  
+        sending_thread.start()
+
         ini_demon = False
 
     # Inicia la conexion con el servidor
     if not is_connected:
+        colaLogs.put(generate_log_entry("INI_CONEX",1,0,player_nickName,"n/a",""))
         data["action"] = "c"
         json_data = json.dumps(data)
         client_socket.sendto(json_data.encode('utf-8'), (server_host, server_port))
@@ -97,10 +123,12 @@ while game_continue:
             time.sleep(waiting_time)
         if(getFeedback(colaMsj,"c")):
             print("conexion exitosa! \n")
+            colaLogs.put(generate_log_entry("INI_CONEX",0,1,player_nickName,"n/a",""))
             is_connected = True
     
     # Obtiene e imprime la informacion de los equipos
     if not has_info and is_connected:
+        colaLogs.put(generate_log_entry("GET_TEAM_DATA",1,0,player_nickName,"n/a",""))
         data["action"] = "t"
         json_data = json.dumps(data)
         client_socket.sendto(json_data.encode('utf-8'), (server_host, server_port))
@@ -116,9 +144,11 @@ while game_continue:
         for i in range(len(options)):
             print(f"{i}:{options[i]}\n")
         has_info = True
+        colaLogs.put(generate_log_entry("GET_TEAM_DATA",0,1,player_nickName,"n/a",""))
 
     # Hace la eleccion | Manejo de votacion (Apruebo / Rechazo )
     if not has_elected and is_connected:
+        colaLogs.put(generate_log_entry("SELECT_TEAM",1,0,player_nickName,"n/a",""))
         data["action"] = "m"
         elec = int(input("opcion: "))
         data["teamId"] = elec
@@ -134,6 +164,7 @@ while game_continue:
         else:
             print(f" \n Error al unirse al equipo: {elec}\n")
             has_info = False
+        colaLogs.put(generate_log_entry("SELECT_TEAM",0,1,player_nickName,elec,""))
         time.sleep(5)
     
     # Manejo de los mensajes de servidor (Juego y votaciones) -> uso de colas para no perder ninguno
@@ -142,6 +173,7 @@ while game_continue:
 
         # Envio de dado
         if(datos["action"] == "r"): 
+            colaLogs.put(generate_log_entry("GAME_ACTIONS",1,0,player_nickName,elec,"SEND_DICE"))
             data["action"] = "r"
             t = random.randint(1, maxDiceNumber)
             data["Dice"] = t
@@ -150,9 +182,11 @@ while game_continue:
             json_data = json.dumps(data)
             client_socket.sendto(json_data.encode('utf-8'), (server_host, server_port))
             print(f"\nse envio el dado con resultado: {t}! \n ")
+            colaLogs.put(generate_log_entry("GAME_ACTIONS",0,1,player_nickName,elec,f"SEND_DICE: {t}"))
         
         # Recepcion de estadisticas del juego en curso
         if(datos["action"] == "s"):
+            colaLogs.put(generate_log_entry("GAME_ACTIONS",1,0,player_nickName,elec,"GET_GAME_STATS"))
             clear_terminal()
             print("Resultados de la ronda: \n ")
             resu = datos["stadis"].split("+")
@@ -160,9 +194,11 @@ while game_continue:
                 print(t)
                 print("\n")
             print("\n")
+            colaLogs.put(generate_log_entry("GAME_ACTIONS",0,1,player_nickName,elec,"GET_GAME_STATS"))
 
         # Aviso y manejo de una votacion
         if(datos["action"] == "v"):
+            colaLogs.put(generate_log_entry("GAME_ACTIONS",1,0,player_nickName,elec,"VOTE_MANAGEMENT"))
             print("player: ")
             print(datos["stadis"])
             print(f"quiere unirse al team: n°{elec}")
@@ -175,14 +211,19 @@ while game_continue:
             json_data = json.dumps(data)
             client_socket.sendto(json_data.encode('utf-8'), (server_host, server_port))
             print("\n")
+            #colaLogs.put(generate_log_entry("GAME_ACTIONS",0,1,player_nickName,elec,f"VOTE_MANAGEMENT: {datos["stadis"]} -> {response}"))
+            colaLogs.put(generate_log_entry("GAME_ACTIONS", 0, 1, player_nickName, elec, f"VOTE_MANAGEMENT: {datos['stadis']} -> {response}"))
+
 
         # Aviso de finalizacion del juego
         if(datos["action"] == "d"):
+            colaLogs.put(generate_log_entry("GAME_ACTIONS",1,0,player_nickName,elec,"END_GAME"))
             clear_terminal()
             print("finalizo el juego. Team ganador:")
             print(datos["stadis"])
             print("\n")
             game_continue = False
+            colaLogs.put(generate_log_entry("GAME_ACTIONS",0,1,player_nickName,elec,f"END_GAME: team winner -> {datos['stadis']}"))
             sys.exit()
         pass
     

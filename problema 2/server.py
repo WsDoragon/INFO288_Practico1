@@ -7,6 +7,9 @@ import threading
 import argparse
 import os
 
+import Pyro4
+from datetime import datetime
+
 # Commit 2da prueba test
 
 from dotenv import load_dotenv
@@ -52,8 +55,10 @@ def votes_management(equipos,jugadores):
                         if(positive == gente): # Aceptacion del miembro
                             sendFeedback(feedback,"m",1,"server",1,"",info[1])                    
                             equipos[info[0]].players.append(jugadores[info[2]])
+                            colaLogs.put(generate_log_entry("TEAM_MANAGEMENT",0,1,host,"n/a",f"GET_INTO_TEAM: {equipos[info[0]].id}"))
                         else: # Rechazo del miembro
                             sendFeedback(feedback,"m",0,"server",0,"",info[1])
+                            colaLogs.put(generate_log_entry("TEAM_MANAGEMENT",0,1,host,"n/a",f"REJECT: {equipos[info[0]].id}"))
                          
                     time.sleep(1)
 
@@ -61,6 +66,7 @@ def votes_management(equipos,jugadores):
                for y in equipos[info[0]].players:
                 y.voted = 3
                 y.aprove = 3
+                colaLogs.put(generate_log_entry("VOTE_MANAGEMENT",0,1,host,equipos[info[0]].id,f"NICK: {jugadores[info[2]].nickName}"))
           else:
                time.sleep(5)
      
@@ -71,6 +77,7 @@ def game(equipos,jugadores):
     game_continue = True
     while game_continue:
         for x in equipos:
+            colaLogs.put(generate_log_entry("GAME_RUNNING",1,0,host,x.id,f"NPLAYERS: {len(x.players)}"))
             for y in x.players:
                 sendFeedback(feedback,"r",1,"server",0,"",(y.ip,y.port)) # Aviso a los integrantes de un equipo de su turno
             time.sleep(10)
@@ -78,8 +85,10 @@ def game(equipos,jugadores):
                 print(f"esperando a jugadores del Equipo: {x.id}")
                 time.sleep(3)
             x.played = 0
+            colaLogs.put(generate_log_entry("GAME_RUNNING",0,1,host,x.id,f"NPLAYERS: {len(x.players)}"))
         
         # Enviar puntajes totales al final de la ronda a todos los jugadores
+        colaLogs.put(generate_log_entry("SEND_GAME_STATS",1,0,host,"",""))
         msj = ""
         for t in equipos:
              msj += f"Team: {t.id} - Points {t.getPoints()} +"
@@ -90,7 +99,7 @@ def game(equipos,jugadores):
             if(x.points >= puntuacionLimite): # Condicion de ganar el partido
                  game_continue = False
                  winner:id = x.id
-        
+        colaLogs.put(generate_log_entry("SEND_GAME_STATS",0,1,host,"",msj))
         
         # Imprime  puntajes en terminal del servidor
         clear_terminal()
@@ -100,12 +109,14 @@ def game(equipos,jugadores):
 
         time.sleep(2)
 
-        if (not game_continue): #Termina el partido
+        if (not game_continue):
+             #Termina el partido
+            colaLogs.put(generate_log_entry("SEND_GAME_END",1,0,host,"",""))
             for x in equipos:
                 for y in x.players:
                     sendFeedback(feedback,"d",1,"server",0,winner,(y.ip,y.port)) # Envio de resultados a jugadores
              #enviar mensaje de final de partido y ganador
-             
+            colaLogs.put(generate_log_entry("SEND_GAME_END",0,1,host,"",""))
 
         
     print(f"finalizó la partida - reiniciar server para iniciar una nueva - gano team: {winner}")
@@ -121,6 +132,24 @@ def sendFeedback(feedback,act,stat,nick,ndice,stadis,target):
     json_data = json.dumps(feedback)
     #print(f"enviando mensaje: {json_data} a {target}")
     server_socket.sendto(json_data.encode('utf-8'), target)
+
+def generate_log_entry(action, inicio, fin, player, team, extra):
+    timestamp = datetime.now().isoformat()
+    return f"{timestamp} | {action} | {inicio} | {fin} | {player} | {team} | {extra} |"
+
+
+def send_logs():
+    # Connect to the name server --HILO
+    ns = Pyro4.locateNS()
+    uri = ns.lookup("example.logserver")
+    log_server = Pyro4.Proxy(uri)  # Create a proxy for the log server object
+    while True:
+        if(not colaLogs.empty()):
+            log_entry = colaLogs.get()
+            response = log_server.add_log(log_entry)
+        else:
+            pass
+
 
 # crear conexion
 
@@ -141,6 +170,8 @@ waitingConnect = Queue()
 demon_game = False
 flag_votacion = False
 demon_vote = False
+
+colaLogs = Queue()
 
 pt = Team(0)
 st = Team(1)
@@ -168,6 +199,10 @@ feedback = { # Estructura de los mensajes
 # --------- flujo principal --------------
 
 print(f"Servidor UDP escuchando en {host}:{port}")
+sending_thread = threading.Thread(target=send_logs)
+sending_thread.daemon = True  
+sending_thread.start()
+
 
 while True:
 
@@ -178,23 +213,26 @@ while True:
 
     # Recibir e inscribir jugador en el servidor -> se guarda en lista "jugadores"
     if received_data["action"] == "c" and not has_conex(addr[0],addr[1],jugadores):
+            colaLogs.put(generate_log_entry("PLAYER_REG",1,0,host,"n/a",f"NICK: {received_data['nickName']}"))
             new_player = Player(received_data["nickName"],addr[0],addr[1],host,port,idCounter)
             jugadores.append(new_player)
             idCounter += 1            
             sendFeedback(feedback,"c",1,"you",0,"",addr)
+            colaLogs.put(generate_log_entry("PLAYER_REG",0,1,host,"n/a",f"NICK: {received_data['nickName']}"))
 
     # Enviar informacion de los teams para que el jugador decida a cual unirse o crear uno nuevo 
     if received_data["action"] == "t":
+         colaLogs.put(generate_log_entry("SEND_TEAM_INFO",1,0,host,"n/a",f"NICK: {received_data['nickName']}"))
          msj = ""
          for x in equipos:
             msj+= f"E:{x.id} - P:{x.playersCount()} +"  # se agrega "+" para hacer .split() en el client
          sendFeedback(feedback,"t",1,"you",0,msj,addr)
+         colaLogs.put(generate_log_entry("SEND_TEAM_INFO",0,1,host,"n/a",f"NICK: {received_data['nickName']}"))
     
     #Manejo de seleccion de equipo -> puede resultar en votaciones, unirse o crear un nuevo equipo
     if received_data["action"] == "m":
+          colaLogs.put(generate_log_entry("TEAM_MANAGEMENT",1,0,host,"n/a",f"NICK: {received_data['nickName']}"))
           j = get_index(addr[0],addr[1],jugadores)
-
-
           if received_data["teamId"] >= nEquiposMax:
               sendFeedback(feedback,"m",0,"you",0,"",addr)
           else:
@@ -202,9 +240,11 @@ while True:
                if received_data["teamId"] > len(equipos)-1:
                     new_team = Team(received_data["teamId"])
                     equipos.append(new_team)
+                    colaLogs.put(generate_log_entry("TEAM_MANAGEMENT",0,1,host,"n/a",f"CREATE_NEW_TEAM: {received_data['teamId']}"))
           
           # Entra a votacion de los intengrantes de un equipo en dejarlo unirse
                if (len(equipos[received_data["teamId"]].players)>0) and (len(equipos[received_data["teamId"]].players) + 1 <= maxPlayerPerTeam):
+                    colaLogs.put(generate_log_entry("VOTE_MANAGEMENT",1,0,host,received_data['teamId'],f"NICK: {received_data['nickName']}"))
                     u = [received_data["teamId"],addr,j]
                     waitingConnect.put(u)
                     if(not demon_vote):
@@ -216,12 +256,15 @@ while True:
                
                elif (len(equipos[received_data["teamId"]].players) + 1 > maxPlayerPerTeam):
                     sendFeedback(feedback,"m",0,"you",0,"",addr)
+                    colaLogs.put(generate_log_entry("TEAM_MANAGEMENT",0,1,host,"n/a",f"REJECT: {received_data['teamId']}"))
+                    
                     pass
                
-               # Ee une ya que el Equipo esta vacio
+               # Se une ya que el Equipo esta vacio
                else:
                     equipos[received_data["teamId"]].players.append(jugadores[j])
                     sendFeedback(feedback,"m",1,"you",0,"",addr)
+                    colaLogs.put(generate_log_entry("TEAM_MANAGEMENT",0,1,host,"n/a",f"GET_INTO_TEAM: {received_data['teamId']}"))
          
           if (firstConex):
                demon_game = True

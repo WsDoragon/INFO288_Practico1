@@ -37,3 +37,60 @@ corrrer cliente
   
 correr server
   python3 server.py --host 192.168.1.26 --port 20002 
+
++++++ LOGS +++++++
+
+IMPORTANTE INSTALAR Pyro4 CON PIP INSTALL
+LUEGO CORRER EN UNA TERMINAL : pyro4-ns
+Luego leventar logserver.py
+luego correr todo como se hizo en el trabajo anterior
+
+
+Estructura de logs
+
+timestamp | accion | Inicio | Fin | Player | Team | Espacio libre para más info |
+
+Explicación
+
+
+timestamp: marca de tiempo
+Accion: string que indica la accion
+Inicio y Fin: (0 o 1) ejemplo
+  -> Inicio de accion "a": "fecha" | "a" | 1 | 0 | leo | 1
+  -> Fin accion "a": "fecha + 1" | "a" | 0 | 1 | leo | 1
+Player: nick del jugador que envia el log
+Team: equipo del jugador que envia el log
+
+Lista de acciones (PLAYER)
+
+  INI_CONEX:
+  GET_TEAM_DATA:
+  SELECT_TEAM:
+  GAME_ACTIONS: -> uso de espacio extra para más info
+    SEND_DICE:
+    GET_GAME_STATS:
+    VOTE_MANAGEMENT:
+    END_GAME:
+
+Lista de acciones (server)
+
+  PLAYER_REG:-> uso de espacio extra para más info
+    NICK:
+  SEND_TEAM_INFO:
+  TEAM_MANAGEMENT: -> uso de espacio extra para más info
+    CREATE_NEW_TEAM:
+    GET_INTO_TEAM:
+    REJECT:
+  VOTE_MANAGEMENT: -> uso de espacio extra para más info
+    PLAYER:
+    TEAM:
+  GAME_RUNNING: -> uso de espacio extra para más info
+    TEAM: (JUGANDO EN RONDA)
+    NPLAYERS: (NUMERO DE JUGADORES POR EQUIPO)
+  SEND_GAME_STATS:
+  SEND_GAME_END:
+
+
+
+
+
