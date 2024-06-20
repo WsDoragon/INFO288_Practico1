@@ -129,13 +129,14 @@ def sendFeedback(feedback,act,stat,nick,ndice,stadis,target):
     feedback["nickName"] = nick
     feedback["dice"] = ndice
     feedback["stadis"] = stadis
+    
     json_data = json.dumps(feedback)
     #print(f"enviando mensaje: {json_data} a {target}")
     server_socket.sendto(json_data.encode('utf-8'), target)
 
 def generate_log_entry(action, inicio, fin, player, team, extra):
     timestamp = datetime.now().isoformat()
-    return f"{timestamp} | {action} | {inicio} | {fin} | {player} | {team} | {extra} |"
+    return f"{timestamp} | {action} | {os.getenv('GAME_NUM')} | {inicio} | {fin} | {player} | {team} | {extra} |"
 
 
 def send_logs():
@@ -193,7 +194,8 @@ feedback = { # Estructura de los mensajes
   "Dice": 0,
   "maxDice": os.getenv("MAX_DICE"),
   "teamId":0,
-  "stadis": "ss"
+  "stadis": "ss",
+  "gameNum": os.getenv("GAME_NUM")
 }
 
 # --------- flujo principal --------------
