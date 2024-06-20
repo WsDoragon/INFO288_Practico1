@@ -17,18 +17,20 @@ client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 # Parseador de argumentos
 parser = argparse.ArgumentParser(description='Client script with parameters.')
-parser.add_argument('--host', type=str, default='192.168.1.26', help='Server host address')
+parser.add_argument('--host', type=str, default='127.0.0.1', help='Server host address')
 parser.add_argument('--port', type=int, default=20001, help='Server port number')
 parser.add_argument('--nick', type=str, default="player", help='Player nick name')
+parser.add_argument('--game', type=str, default="Juego_1", help='Game number to log')
 args = parser.parse_args()
 
 def generate_log_entry(action, inicio, fin, player, team, extra):
     timestamp = datetime.now().isoformat()
-    return f"{timestamp} | {action} | {inicio} | {fin} | {player} | {team} | {extra} |"
+    return f"{timestamp} | {action} | {game_num} | {inicio} | {fin} | {player} | {team} | {extra} |"
 
 # Funcion que revisa la cola de mensajes y retorna positvo o afirmativo
 def getFeedback(cola,accion):
     datos = cola.get()
+   
     #print(datos)
     if(datos["status"] == 0 and datos["action"] == accion):
         return False
@@ -39,10 +41,12 @@ def getFeedback(cola,accion):
 
 # Hilo que recibe mensajes y los mete en cola
 def recibir_mensajes():
+    
     while True:
         try:
             print("respuesta: ")
-            message, _ = client_socket.recvfrom(1024)
+            time.sleep(1) #Solucion bug windows
+            message= client_socket.recv(1024)
             json_data = message.decode('utf-8')
             received_data = json.loads(json_data)
             colaMsj.put(received_data)            
@@ -69,6 +73,8 @@ def send_logs():
 server_host = args.host    
 server_port = args.port    
 player_nickName = args.nick
+game_num = args.game
+
 
 #client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
@@ -121,8 +127,11 @@ while game_continue:
         while(colaMsj.empty()):
             print(".", end='', flush=True)
             time.sleep(waiting_time)
+
+        
         if(getFeedback(colaMsj,"c")):
             print("conexion exitosa! \n")
+            
             colaLogs.put(generate_log_entry("INI_CONEX",0,1,player_nickName,"n/a",""))
             is_connected = True
     
