@@ -1,0 +1,112 @@
+2024-06-20T02:58:20.195959 | PLAYER_REG | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T02:58:20.195959 | PLAYER_REG | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T02:58:20.187450 | INI_CONEX | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T03:29:29.242246 | PLAYER_REG | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T03:29:29.242246 | PLAYER_REG | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T03:29:29.224123 | INI_CONEX | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T03:30:04.138275 | INI_CONEX | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T03:30:22.387285 | INI_CONEX | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T03:31:00.664154 | INI_CONEX | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T03:35:52.393454 | PLAYER_REG | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T03:35:52.393454 | PLAYER_REG | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T03:35:52.373789 | INI_CONEX | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T03:40:00.105693 | PLAYER_REG | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T03:40:00.105693 | PLAYER_REG | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T03:40:00.090141 | INI_CONEX | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T03:40:28.629673 | PLAYER_REG | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T03:40:28.629673 | PLAYER_REG | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T03:40:28.614150 | INI_CONEX | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T03:42:19.280479 | PLAYER_REG | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T03:42:19.280479 | PLAYER_REG | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T03:42:19.268952 | INI_CONEX | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T03:43:19.486417 | PLAYER_REG | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T03:43:19.486417 | PLAYER_REG | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T03:43:19.479908 | INI_CONEX | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T03:59:14.598591 | PLAYER_REG | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T03:59:14.598591 | PLAYER_REG | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T03:59:14.591808 | INI_CONEX | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T04:04:34.741060 | PLAYER_REG | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:04:34.741060 | PLAYER_REG | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:14:02.639455 | PLAYER_REG | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:14:02.639455 | PLAYER_REG | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:14:26.035483 | PLAYER_REG | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:14:26.035483 | PLAYER_REG | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:15:30.978607 | PLAYER_REG | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:15:30.978607 | PLAYER_REG | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:17:50.107680 | PLAYER_REG | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:17:50.107680 | PLAYER_REG | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:17:50.093526 | INI_CONEX | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T04:19:11.444427 | PLAYER_REG | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:19:11.444427 | PLAYER_REG | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:20:55.191280 | PLAYER_REG | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:20:55.191280 | PLAYER_REG | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:20:58.309905 | SEND_TEAM_INFO | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:20:58.309905 | SEND_TEAM_INFO | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:20:55.179770 | INI_CONEX | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T04:20:58.293904 | INI_CONEX | no_game_num | 0 | 1 | user1 | n/a |  |
+2024-06-20T04:20:58.293904 | GET_TEAM_DATA | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T04:21:01.554856 | GET_TEAM_DATA | no_game_num | 0 | 1 | user1 | n/a |  |
+2024-06-20T04:21:01.554856 | SELECT_TEAM | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T04:23:01.912311 | PLAYER_REG | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:23:01.912311 | PLAYER_REG | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:23:01.904063 | INI_CONEX | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T04:24:53.790099 | PLAYER_REG | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:24:53.790099 | PLAYER_REG | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:24:53.770622 | INI_CONEX | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T04:26:43.721215 | PLAYER_REG | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:26:43.721215 | PLAYER_REG | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:26:43.702980 | INI_CONEX | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T04:27:29.673726 | PLAYER_REG | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:27:29.673726 | PLAYER_REG | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:27:29.659959 | INI_CONEX | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T04:27:45.376266 | PLAYER_REG | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:27:45.376266 | PLAYER_REG | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:27:45.359240 | INI_CONEX | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T04:28:12.705353 | PLAYER_REG | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:28:12.705353 | PLAYER_REG | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:28:12.689307 | INI_CONEX | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T04:29:10.238330 | PLAYER_REG | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:29:10.238330 | PLAYER_REG | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:29:12.056805 | SEND_TEAM_INFO | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:29:12.056805 | SEND_TEAM_INFO | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:29:10.217314 | INI_CONEX | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T04:29:12.041433 | INI_CONEX | no_game_num | 0 | 1 | user1 | n/a |  |
+2024-06-20T04:29:12.041433 | GET_TEAM_DATA | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T04:29:12.960295 | GET_TEAM_DATA | no_game_num | 0 | 1 | user1 | n/a |  |
+2024-06-20T04:29:12.960295 | SELECT_TEAM | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T04:31:08.012896 | PLAYER_REG | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:31:08.012896 | PLAYER_REG | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:31:08.004947 | INI_CONEX | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T04:33:07.737509 | PLAYER_REG | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:33:07.737509 | PLAYER_REG | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:33:10.428490 | SEND_TEAM_INFO | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:33:10.428490 | SEND_TEAM_INFO | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:33:07.725129 | INI_CONEX | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T04:33:10.412924 | INI_CONEX | no_game_num | 0 | 1 | user1 | n/a |  |
+2024-06-20T04:33:10.412924 | GET_TEAM_DATA | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T04:33:13.240748 | GET_TEAM_DATA | no_game_num | 0 | 1 | user1 | n/a |  |
+2024-06-20T04:33:13.240748 | SELECT_TEAM | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T04:33:47.420488 | PLAYER_REG | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:33:47.420488 | PLAYER_REG | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:33:47.406455 | INI_CONEX | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T04:34:32.685584 | PLAYER_REG | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:34:32.685584 | PLAYER_REG | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:34:32.666511 | INI_CONEX | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T04:35:56.500651 | PLAYER_REG | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:35:56.500651 | PLAYER_REG | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:35:56.836006 | SEND_TEAM_INFO | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:35:56.836006 | SEND_TEAM_INFO | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:35:56.482560 | INI_CONEX | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T04:35:56.819972 | INI_CONEX | no_game_num | 0 | 1 | user1 | n/a |  |
+2024-06-20T04:35:56.819972 | GET_TEAM_DATA | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T04:35:59.696433 | GET_TEAM_DATA | no_game_num | 0 | 1 | user1 | n/a |  |
+2024-06-20T04:35:59.696433 | SELECT_TEAM | no_game_num | 1 | 0 | user1 | n/a |  |
+2024-06-20T04:40:30.192671 | PLAYER_REG | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:40:30.192671 | PLAYER_REG | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:40:34.534661 | SEND_TEAM_INFO | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:40:34.534661 | SEND_TEAM_INFO | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
+2024-06-20T04:40:30.177197 | INI_CONEX | Juego_1 | 1 | 0 | user1 | n/a |  |
+2024-06-20T04:40:34.518852 | INI_CONEX | Juego_1 | 0 | 1 | user1 | n/a |  |
+2024-06-20T04:40:34.518852 | GET_TEAM_DATA | Juego_1 | 1 | 0 | user1 | n/a |  |
+2024-06-20T04:40:39.008032 | GET_TEAM_DATA | Juego_1 | 0 | 1 | user1 | n/a |  |
+2024-06-20T04:40:39.008032 | SELECT_TEAM | Juego_1 | 1 | 0 | user1 | n/a |  |
