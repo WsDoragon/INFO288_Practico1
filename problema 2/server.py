@@ -205,7 +205,7 @@ sending_thread = threading.Thread(target=send_logs)
 sending_thread.daemon = True  
 sending_thread.start()
 
-
+colaLogs.put(generate_log_entry("SERVER_START",1,0,host,"n/a",""))
 while True:
 
     # Recepcion de la informacion
@@ -240,9 +240,10 @@ while True:
           else:
           # Crear un nuevo equipo
                if received_data["teamId"] > len(equipos)-1:
+                    colaLogs.put(generate_log_entry("CREATE_NEW_TEAM",1,0,host,"n/a",f"CREATE_NEW_TEAM: {received_data['teamId']}"))
                     new_team = Team(received_data["teamId"])
                     equipos.append(new_team)
-                    colaLogs.put(generate_log_entry("TEAM_MANAGEMENT",0,1,host,"n/a",f"CREATE_NEW_TEAM: {received_data['teamId']}"))
+                    colaLogs.put(generate_log_entry("CREATE_NEW_TEAM",0,1,host,"n/a",f"CREATE_NEW_TEAM: {received_data['teamId']}"))
           
           # Entra a votacion de los intengrantes de un equipo en dejarlo unirse
                if (len(equipos[received_data["teamId"]].players)>0) and (len(equipos[received_data["teamId"]].players) + 1 <= maxPlayerPerTeam):
