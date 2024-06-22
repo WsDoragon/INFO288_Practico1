@@ -7,6 +7,7 @@ import usersPerTeam
 import playersInTime
 import teamsInTime
 import scoreCurves
+from dotenv import load_dotenv
 
 def create_folder(path):
     if not os.path.exists(path):
@@ -44,32 +45,27 @@ def divide_centra_log(path):
 
 # -------------------Main-------------------- #
 
-# solicitar args de ejecucion "python main.py path_to_log"
-if len(sys.argv) != 3 or not os.path.exists(sys.argv[1]) or not float(sys.argv[2]).is_integer:
-    print("Error: Problema en la ejecucion de argumentos\nEjecucion: python main.py path_to_log intervalo_en_minutos\nEjemplo: python main.py ../gameLog.txt 5\n\n")
+# solicitar args de ejecucion
+if len(sys.argv) != 2 or not os.path.exists(sys.argv[1]):
+    print("Error: Problema en la ejecucion de argumentos\nEjecucion: python main.py path_to_log \nEjemplo: python main.py ../gameLog.txt \n\n")
     sys.exit()
 
-print(f"Archivo de log: {sys.argv[1]} | {sys.argv[2]}")
-
 path_to_log = sys.argv[1]
-interval = float(sys.argv[2])
 divide_centra_log(path_to_log)
 
-
+load_dotenv()
 
 # leer todos los archivos de gameLogs
 logs_path = "./gameLogs"
 files = os.listdir(logs_path)
 
-#print("Archivos de logs: ", files)
-
 for file in files:
-
     print(f"\n---------- RUTAS DE GRAFICOS {file} ----------")
     actionsPerUser.main(f"{logs_path}/{file}")
     usersPerTeam.main(f"{logs_path}/{file}")
-    playersInTime.main(f"{logs_path}/{file}", interval)
-    teamsInTime.main(f"{logs_path}/{file}", interval)
-    scoreCurves.main(f"{logs_path}/{file}", interval)
+    playersInTime.main(f"{logs_path}/{file}", float(os.getenv("USERS_INTERVAL")))
+    teamsInTime.main(f"{logs_path}/{file}", float(os.getenv("TEAMS_INTERVAL")))
+    scoreCurves.main(f"{logs_path}/{file}", float(os.getenv("SCORE_INTERVAL")))
 
 
+print("\n")
