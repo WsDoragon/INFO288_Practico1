@@ -80,6 +80,7 @@ plt.bar(user_per_interval.keys(), user_per_interval.values(), color='skyblue')  
 plt.xlabel('Intervalo')  # Etiqueta del eje X
 plt.ylabel('Cantidad de Usuarios')  # Etiqueta del eje Y
 plt.title(f'Cantidad de Usuarios nuevos por Intervalo en {game_num}')  # Título del gráfico
+plt.savefig(f"./graficosEstadisticos/game_{game_num}_PlayersPerInterval.png")
 plt.show()  # Muestra el gráfico
 
         
