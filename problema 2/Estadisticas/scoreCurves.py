@@ -40,7 +40,7 @@ def get_log_entries_by_intervals(log_file, interval_minutes):
 
 
 
-interval_minutes = 5  # Intervalo de tiempo en minutos
+interval_minutes = 1  # Intervalo de tiempo en minutos
 log_file = '../gameLog.txt'
 
 entries_by_interval, game_num, first_timestamp = get_log_entries_by_intervals(log_file, interval_minutes)
