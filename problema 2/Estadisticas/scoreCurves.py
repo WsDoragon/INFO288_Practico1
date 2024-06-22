@@ -40,7 +40,7 @@ def get_log_entries_by_intervals(log_file, interval_minutes):
 
 
 
-interval_minutes = 0.5  # Intervalo de tiempo en minutos
+interval_minutes = 5  # Intervalo de tiempo en minutos
 log_file = '../gameLog.txt'
 
 entries_by_interval, game_num, first_timestamp = get_log_entries_by_intervals(log_file, interval_minutes)
@@ -94,9 +94,10 @@ print("TheEnd: ", TheEnd)
 all_intervals = set(TheEnd.keys())
 print(TheEnd[min(all_intervals)].keys())
 temp_zero_points = {}
-for key in TheEnd[min(all_intervals)].keys():
-    temp_zero_points[key] = 0
-TheEnd[0] = temp_zero_points
+if 0 not in all_intervals:
+    for key in TheEnd[min(all_intervals)].keys():
+        temp_zero_points[key] = 0
+    TheEnd[0] = temp_zero_points
 
 # Obtener todos los intervalos nuevos
 all_intervals = set(TheEnd.keys())
