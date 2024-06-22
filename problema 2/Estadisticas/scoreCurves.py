@@ -38,19 +38,6 @@ def get_log_entries_by_intervals(log_file, interval_minutes):
 
     return entries_by_interval, game_number, first_timestamp
 
-
-
-interval_minutes = 1  # Intervalo de tiempo en minutos
-log_file = '../gameLog.txt'
-
-entries_by_interval, game_num, first_timestamp = get_log_entries_by_intervals(log_file, interval_minutes)
-print("entries_by_interval: ", entries_by_interval)
-for interval, entries in entries_by_interval.items():
-    print(f"Intervalo {interval}:")
-    for entry in entries:
-        print(entry)
-
-
 def points_by_team(entries):
     
     points_by_interval_and_team = defaultdict(dict)
@@ -69,13 +56,6 @@ def points_by_team(entries):
                     points_by_interval_and_team[interval][team_name] = points
     return points_by_interval_and_team
 
-    ''' print("Points by interval and team:")
-    for interval, teams in points_by_interval_and_team.items():
-        print(f"Interval {interval}:")
-        for team, points in teams.items():
-            print(f"Team {team}: Points {points}")'''
-
-
 def obtain_one_entry_per_interval(entries):
     # Obtener una entrada por intervalo
     one_entry_per_interval = defaultdict(list)
@@ -83,50 +63,59 @@ def obtain_one_entry_per_interval(entries):
         one_entry_per_interval[interval].append(min(entries_list, key=lambda x: datetime.datetime.strptime(x.split('|')[0].strip(), '%Y-%m-%dT%H:%M:%S.%f')))
     return(one_entry_per_interval)
 
-intervaled = obtain_one_entry_per_interval(entries_by_interval)
 
-TheEnd = points_by_team(intervaled)
-print("TheEnd: ", TheEnd)
+def main(path_to_log, set_interval):
+    interval_minutes = set_interval  # Intervalo de tiempo en minutos
+    log_file = path_to_log
 
+    entries_by_interval, game_num, first_timestamp = get_log_entries_by_intervals(log_file, interval_minutes)
+    print("entries_by_interval: ", entries_by_interval)
+    for interval, entries in entries_by_interval.items():
+        print(f"Intervalo {interval}:")
+        for entry in entries:
+            print(entry)
 
+    intervaled = obtain_one_entry_per_interval(entries_by_interval)
 
-# Obtener todos los intervalos existentes
-all_intervals = set(TheEnd.keys())
-print(TheEnd[min(all_intervals)].keys())
-temp_zero_points = {}
-if 0 not in all_intervals:
-    for key in TheEnd[min(all_intervals)].keys():
-        temp_zero_points[key] = 0
-    TheEnd[0] = temp_zero_points
+    the_end = points_by_team(intervaled)
+    print("the_end: ", the_end)
 
-# Obtener todos los intervalos nuevos
-all_intervals = set(TheEnd.keys())
-# Encontrar el intervalo mínimo y máximo
-min_interval = min(all_intervals)
-max_interval = max(all_intervals)
+    # Obtener todos los intervalos existentes
+    all_intervals = set(the_end.keys())
+    print(the_end[min(all_intervals)].keys())
+    temp_zero_points = {}
+    if 0 not in all_intervals:
+        for key in the_end[min(all_intervals)].keys():
+            temp_zero_points[key] = 0
+        the_end[0] = temp_zero_points
 
-# Crear un nuevo diccionario para almacenar los puntos por intervalo y equipo con los intervalos faltantes
-filled_points_by_interval_and_team = {}
+    # Obtener todos los intervalos nuevos
+    all_intervals = set(the_end.keys())
+    # Encontrar el intervalo mínimo y máximo
+    min_interval = min(all_intervals)
+    max_interval = max(all_intervals)
 
-# Iterar sobre todos los intervalos desde el mínimo hasta el máximo
-for interval in range(min_interval, max_interval + 1):
-    # Si el intervalo existe en TheEnd, copiar los puntos por equipo
-    if interval in TheEnd:
-        filled_points_by_interval_and_team[interval] = TheEnd[interval]
-    # Si el intervalo no existe en TheEnd, copiar los puntos del intervalo anterior
-    else:
-        filled_points_by_interval_and_team[interval] = filled_points_by_interval_and_team[interval - 1]
+    # Crear un nuevo diccionario para almacenar los puntos por intervalo y equipo con los intervalos faltantes
+    filled_points_by_interval_and_team = {}
 
-# Actualizar TheEnd con los intervalos faltantes
-TheEnd = filled_points_by_interval_and_team
+    # Iterar sobre todos los intervalos desde el mínimo hasta el máximo
+    for interval in range(min_interval, max_interval + 1):
+        # Si el intervalo existe en the_end, copiar los puntos por equipo
+        if interval in the_end:
+            filled_points_by_interval_and_team[interval] = the_end[interval]
+        # Si el intervalo no existe en the_end, copiar los puntos del intervalo anterior
+        else:
+            filled_points_by_interval_and_team[interval] = filled_points_by_interval_and_team[interval - 1]
 
-def plot_points_by_team(points_by_team):
-    teams = list(points_by_team.values())[0].keys()
-    intervals = list(points_by_team.keys())
-    
+    # Actualizar the_end con los intervalos faltantes
+    the_end = filled_points_by_interval_and_team  
+
+    teams = list(the_end.values())[0].keys()
+    intervals = list(the_end.keys())
+        
     plt.figure(figsize=(12, 8))
     for team in teams:
-        points = [points_by_team[interval][team] for interval in intervals]
+        points = [the_end[interval][team] for interval in intervals]
         plt.plot(intervals, points, label=team)
     plt.xlabel('Interval')
     plt.ylabel('Points')
@@ -137,5 +126,3 @@ def plot_points_by_team(points_by_team):
     plt.legend()
     #plt.show()
     plt.savefig(f'./graficosEstadisticos/game_{game_num}_ScoreCurves.png')
-
-plot_points_by_team(TheEnd)
