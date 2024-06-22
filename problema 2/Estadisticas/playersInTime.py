@@ -73,6 +73,15 @@ for interval, entries in entries_by_interval.items():
     user_per_interval[interval] = (counter)
 
 print("user_per_interval: ", user_per_interval)
+
+# Graficar los usuarios por intervalo de tiempo
+plt.figure(figsize=(10, 6))  # Ajusta el tamaño del gráfico
+plt.bar(user_per_interval.keys(), user_per_interval.values(), color='skyblue')  # Crea las barras
+plt.xlabel('Intervalo')  # Etiqueta del eje X
+plt.ylabel('Cantidad de Usuarios')  # Etiqueta del eje Y
+plt.title(f'Cantidad de Usuarios nuevos por Intervalo en {game_num}')  # Título del gráfico
+plt.show()  # Muestra el gráfico
+
         
 
 #entry_keys = list(entries_by_interval.keys())
