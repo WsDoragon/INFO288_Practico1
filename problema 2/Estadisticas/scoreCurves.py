@@ -69,20 +69,16 @@ def main(path_to_log, set_interval):
     log_file = path_to_log
 
     entries_by_interval, game_num, first_timestamp = get_log_entries_by_intervals(log_file, interval_minutes)
-    print("entries_by_interval: ", entries_by_interval)
-    for interval, entries in entries_by_interval.items():
-        print(f"Intervalo {interval}:")
-        for entry in entries:
-            print(entry)
+    #print("entries_by_interval: ", entries_by_interval)
 
     intervaled = obtain_one_entry_per_interval(entries_by_interval)
 
     the_end = points_by_team(intervaled)
-    print("the_end: ", the_end)
+    #print("the_end: ", the_end)
 
     # Obtener todos los intervalos existentes
     all_intervals = set(the_end.keys())
-    print(the_end[min(all_intervals)].keys())
+    #print(the_end[min(all_intervals)].keys())
     temp_zero_points = {}
     if 0 not in all_intervals:
         for key in the_end[min(all_intervals)].keys():
@@ -126,3 +122,5 @@ def main(path_to_log, set_interval):
     plt.legend()
     #plt.show()
     plt.savefig(f'./graficosEstadisticos/game_{game_num}_ScoreCurves.png')
+
+    print(f"* Puntos por equipo en el juego {game_num} guardados en ./graficosEstadisticos/game_{game_num}_ScoreCurves.png")
