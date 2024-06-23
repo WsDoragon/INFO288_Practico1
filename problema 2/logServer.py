@@ -27,7 +27,7 @@ def main():
     serverName = str(os.getenv("LOG_SERVER"))
     log_server = LogServer(logName)
     daemon = Pyro4.Daemon()  # Pyro daemon
-    ns = Pyro4.locateNS()  # Locate the name server
+    ns = Pyro4.locateNS(host=os.getenv("LOG_SERVER_IP"))  # Locate the name server
     uri = daemon.register(log_server)  # Register the log server object
     ns.register(serverName, uri)  # Register the object with a name in the name server
     print("Log Server is running.")

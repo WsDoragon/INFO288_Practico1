@@ -9,6 +9,9 @@ import argparse
 import os
 import Pyro4
 from datetime import datetime
+from dotenv import load_dotenv
+
+load_dotenv(".envclient")
 
 from functions import clear_terminal
 
@@ -56,8 +59,8 @@ def recibir_mensajes():
 
 def send_logs():
     # Connect to the name server
-    ns = Pyro4.locateNS()
-    uri = ns.lookup("example.logserver")
+    ns = Pyro4.locateNS(host=os.getenv("LOG_SERVER_IP"))
+    uri = ns.lookup(os.getenv("LOG_SERVER_NAME"))
     log_server = Pyro4.Proxy(uri)  # Create a proxy for the log server object
     while True:
         if(not colaLogs.empty()):
