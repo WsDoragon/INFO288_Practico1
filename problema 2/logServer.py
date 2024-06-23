@@ -26,9 +26,10 @@ def main():
     logName = os.getenv("LOGNAME")
     serverName = str(os.getenv("LOG_SERVER"))
     log_server = LogServer(logName)
-    daemon = Pyro4.Daemon()  # Pyro daemon
+    daemon = Pyro4.Daemon(host=os.getenv("LOG_SERVER_IP"))  # Pyro daemon
     ns = Pyro4.locateNS(host=os.getenv("LOG_SERVER_IP"))  # Locate the name server
     uri = daemon.register(log_server)  # Register the log server object
+    print(uri)
     ns.register(serverName, uri)  # Register the object with a name in the name server
     print("Log Server is running.")
     daemon.requestLoop()  # Start the event loop of the server to wait for calls
