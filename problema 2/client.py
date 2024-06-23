@@ -20,7 +20,7 @@ client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 # Parseador de argumentos
 parser = argparse.ArgumentParser(description='Client script with parameters.')
-parser.add_argument('--host', type=str, default='127.0.0.1', help='Server host address')
+parser.add_argument('--host', type=str, default='192.168.4.24', help='Server host address')
 parser.add_argument('--port', type=int, default=20001, help='Server port number')
 parser.add_argument('--nick', type=str, default="player", help='Player nick name')
 parser.add_argument('--game', type=str, default="Juego_1", help='Game number to log')
@@ -58,16 +58,19 @@ def recibir_mensajes():
             break
 
 def send_logs():
-    # Connect to the name server
-    ns = Pyro4.locateNS(host=os.getenv("LOG_SERVER_IP"))
-    uri = ns.lookup(os.getenv("LOG_SERVER_NAME"))
-    log_server = Pyro4.Proxy(uri)  # Create a proxy for the log server object
-    while True:
-        if(not colaLogs.empty()):
-            log_entry = colaLogs.get()
-            response = log_server.add_log(log_entry)
-        else:
-            pass
+    try:
+        # Connect to the name server
+        ns = Pyro4.locateNS(host=os.getenv("LOG_SERVER_IP"))
+        uri = ns.lookup(os.getenv("LOG_SERVER_NAME"))
+        log_server = Pyro4.Proxy(uri)  # Create a proxy for the log server object
+        while True:
+            if(not colaLogs.empty()):
+                log_entry = colaLogs.get()
+                response = log_server.add_log(log_entry)
+            else:
+                pass
+    except Exception as e:
+        print(f"Error al enviar logs al servidor: {e}")
 
 
 #  ------Varibles-------
