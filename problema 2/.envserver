@@ -7,5 +7,5 @@ MAX_DICE = 10
 
 GAME_NUM = Juego_1
 
-LOG_SERVER_IP = 192.168.1.5
-LOG_SERVER_NAME = "example.logserver"
+LOG_SERVER_IP = 192.168.4.21
+LOG_SERVER_NAME = example.logserver
