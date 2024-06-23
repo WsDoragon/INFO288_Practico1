@@ -77,12 +77,15 @@ def main(path_to_log, defined_interval):
     #print("user_per_interval: ", user_per_interval)
 
     # Graficar los usuarios por intervalo de tiempo
-    plt.figure(figsize=(10, 6))  # Ajusta el tamaño del gráfico
+    plt.figure(figsize=(12, 8))  # Ajusta el tamaño del gráfico
     plt.bar(user_per_interval.keys(), user_per_interval.values(), color='skyblue')  # Crea las barras con un ancho de 0.8
     plt.xlabel('Intervalo')  # Etiqueta del eje X
     plt.xticks(list(user_per_interval.keys()))
     plt.ylabel('Cantidad de Usuarios')  # Etiqueta del eje Y
     plt.title(f'Cantidad de Usuarios nuevos por Intervalo en {game_num}')  # Título del gráfico
+    # Descripción de los intervalos
+    interval_description = f"Intervalo de {interval_minutes} minutos\nInicio en {first_timestamp}"
+    plt.figtext(0.5, 0.01, interval_description, wrap=True, horizontalalignment='center', fontsize=10)
     plt.savefig(f"./graficosEstadisticos/game_{game_num}_PlayersPerInterval.png")
     #plt.show()  # Muestra el gráfico
 

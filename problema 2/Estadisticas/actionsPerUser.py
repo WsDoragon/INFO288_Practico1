@@ -41,7 +41,7 @@ def main(path_to_log):
     actions_count = [len(actions) for actions in usersActions.values()]
 
     # Generar el gráfico de barras
-    plt.figure(figsize=(10, 6))  # Ajusta el tamaño del gráfico
+    plt.figure(figsize=(12, 8))  # Ajusta el tamaño del gráfico
     plt.bar(players, actions_count, color='skyblue')  # Crea las barras
     plt.xlabel('Usuarios')  # Etiqueta del eje X
     plt.ylabel('Cantidad de Acciones')  # Etiqueta del eje Y

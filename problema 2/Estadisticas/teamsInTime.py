@@ -78,12 +78,15 @@ def main(path_to_log, set_interval):
     #print("teams_per_interval: ", teams_per_interval)
 
     # Generar el gráfico de barras de equipos por intervalo
-    plt.figure(figsize=(10, 6))  # Ajusta el tamaño del gráfico
+    plt.figure(figsize=(12, 8))  # Ajusta el tamaño del gráfico
     plt.bar(teams_per_interval.keys(), teams_per_interval.values(), color='skyblue')  # Crea las barras
     plt.xlabel('Intervalo')  # Etiqueta del eje X
     plt.xticks(list(teams_per_interval.keys()))
     plt.ylabel('Cantidad de Equipos')  # Etiqueta del eje Y
     plt.title(f'Cantidad de Equipos por Intervalo en {game_num}')  # Título del gráfico
+    # Descripción de los intervalos
+    interval_description = f"Intervalo de {interval_minutes} minutos\nInicio en {first_timestamp}"
+    plt.figtext(0.5, 0.01, interval_description, wrap=True, horizontalalignment='center', fontsize=10)
     plt.xticks(rotation=45)  # Rota los nombres de los intervalos para mejor lectura
     plt.savefig(f"./graficosEstadisticos/game_{game_num}_TeamsPerInterval.png")
     #plt.show()  # Muestra el gráfico

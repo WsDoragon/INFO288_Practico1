@@ -44,7 +44,7 @@ def main(path_to_log):
     players_count = [len(users) for users in teamsUsers.values()]
 
     # Generar el gráfico de barras
-    plt.figure(figsize=(10, 6))  # Ajusta el tamaño del gráfico
+    plt.figure(figsize=(12, 8))  # Ajusta el tamaño del gráfico
     plt.bar(teams, players_count, color='skyblue')  # Crea las barras
     plt.xlabel('Equipos')  # Etiqueta del eje X
     plt.ylabel('Cantidad de Jugadores')  # Etiqueta del eje Y
