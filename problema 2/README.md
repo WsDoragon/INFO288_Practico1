@@ -129,8 +129,8 @@ Se propuso la implementacion de logs atraves de un servidor RMI, almacenando log
     | CREATE_NEW_TEAM | Indica la creacion de un equipo adicional a los 2 por defecto del servidor |
     | TEAM_MANAGEMENT | Relacionado al manejo de equipos, puede utilizar el espacio adicional con `GET_INTO_TEAM: [Equipo]` indicando el unirse de forma exitosa o `REJECT` indicando que no se pudo unir el jugador |
     | VOTE_MANAGEMENT | REVISAR CON NUEVA EJECUCION |
-    | GAME_RUNNING | Relacionado con la ejecucion del juego, Utiliza espacio adicional indicando ``TEAM`` que juega la ronda y ``NPLAYERS`` con el numero de jugadores por equipo |
-    | SEND_GAME_STATS | Indica el envio de estadisticas de juego utilizando espacio adicional para indicar puntos por equipo |
+    | GAME_RUNNING | Indica el inicio  y el fin de una ronda, Utiliza espacio adicional indicando el ``TEAM`` que juega en la ronda y ``NPLAYERS`` con el numero de jugadores por el equipo jugando |
+    | SEND_GAME_STATS | Indica el envio de estadisticas de juego utilizando espacio adicional para indicar puntos por equipo | Hace uso de espacio adicional para enviar estadisticas.
     | SEND_GAME_END | Envia el fin del juego a los jugadores |
 
 
