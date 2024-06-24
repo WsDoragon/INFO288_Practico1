@@ -128,7 +128,7 @@ Se propuso la implementacion de logs atraves de un servidor RMI, almacenando log
     | SEND_TEAM_INFO | Indica que se esta enviando informacion de los equipos al nuevo usuario |
     | CREATE_NEW_TEAM | Indica la creacion de un equipo adicional a los 2 por defecto del servidor |
     | TEAM_MANAGEMENT | Relacionado al manejo de equipos, puede utilizar el espacio adicional con `GET_INTO_TEAM: [Equipo]` indicando el unirse de forma exitosa o `REJECT` indicando que no se pudo unir el jugador |
-    | VOTE_MANAGEMENT | REVISAR CON NUEVA EJECUCION |
+    | VOTE_MANAGEMENT | Manejo de los votos |
     | GAME_RUNNING | Indica el inicio  y el fin de una ronda, Utiliza espacio adicional indicando el ``TEAM`` que juega en la ronda y ``NPLAYERS`` con el numero de jugadores por el equipo jugando |
     | SEND_GAME_STATS | Indica el envio de estadisticas de juego utilizando espacio adicional para indicar puntos por equipo | Hace uso de espacio adicional para enviar estadisticas.
     | SEND_GAME_END | Envia el fin del juego a los jugadores |
@@ -142,6 +142,7 @@ Se propuso la implementacion de logs atraves de un servidor RMI, almacenando log
 
 | Variable | Descripcion |
 | -------- | ----------- |
+| GAME_NUM | Indica el numero de juego, se aconseja tener este formato: `Juego_[N°]` |
 | LOG_SERVER_IP | Direccion ip maquina que contiene el servidor RMI de logs y nameserver |
 | LOG_SERVER_NAME | Nombre que se buscara en el nameserver de Pyro4 en la maquina del servidor RMI |
 
@@ -163,3 +164,4 @@ Se propuso la implementacion de logs atraves de un servidor RMI, almacenando log
 ## Consideraciones Generales
 * La maquina host del servidor RMI puede necesitar que la red este configurada como privada en caso de trabajar en windows.
 * Es completamente necesario que el nameserver de Pyro4 se encuentre en ejecucion mientras se ejecuta todo.
+* Durante las pruebas se pudo observar un fenomeno en el cual en ocasiones el logserver agregaba los datos cortados al archivo de logs.
