@@ -28,4 +28,5 @@
 | TEAMS_INTERVAL | Intervalo de tiempo en minutos para componente de ``teamsInTime.py``  |
 | USERS_INTERVAL | Intervalo de tiempo en minutos para componente de ``usersPerTeam.py`` |
 
-
+## Consideraciones
+* Al momento de ejecutar main.py si existen .txt en la carpeta de gameLogs igual seran analizados, en caso de que no contengan la estructura de la informacion utilizada este programa terminara en error.
