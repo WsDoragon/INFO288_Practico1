@@ -62,8 +62,9 @@ Se utilizan variables de entorno para configurar el servidor.
 Se propuso la implementacion de logs atraves de un servidor RMI, almacenando logs del servidor y el cliente en un log centralizado para realizar un analisis de este posteriormente.
 
 ## Requerimientos
-* Librerias nuevas:
+* Librerias nuevas (igualmente en ``requirements.txt``):
     *  Pyro4 (`pip install Pyro4`)
+    * matplotlib (`pip install matplotlib`)
 
 * Realizar la ejecucion de un nameserver pyro4 en la maquina que tendra el servidor RMI de logs
     ```bash
