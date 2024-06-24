@@ -1,2 +1,3 @@
 python-dotenv
 Pyro4
+matplotlib
