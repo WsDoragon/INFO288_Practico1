@@ -1,48 +1,316 @@
-2024-06-23T00:04:27.420642 | SERVER_START | Juego_1 | 1 | 0 | 127.0.0.1 | n/a |  |
-2024-06-23T00:04:42.332698 | PLAYER_REG | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
-2024-06-23T00:04:42.315703 | INI_CONEX | Juego_1 | 1 | 0 | user1 | n/a |  |
- NICK: user1 |
-2024-06-23T00:04:46.847291 | INI_CONEX | Juego_1 | 0 | 1 | user1 | n/a |  |
-2024-06-23T00:04:46.847291 | GET_TEAM_DATA | Juego_1 | 1 | 0 | user1 | n/a |  |
-2024-06-23T00:04:46.862203 | SEND_TEAM_INFO | Juego_1 | 1 | 0 | 127.0.0.1 | n/a | NICK: user1 |
-2024-06-23T00:04:46.862203 | SEND_TEAM_INFO | Juego_1 | 0 | 1 | 127.0.0.1 | n/a | NICK: user1 |
-2024-06-23T00:04:51.516737 | GET_TEAM_DATA | Juego_1 | 0 | 1 | user1 | n/a |  |
-2024-06-23T00:04:51.516737 | SELECT_TEAM | Juego_1 | 1 | 0 | user1 | n/a |  |
-2024-06-23T00:36:08.167819 | SERVER_START | Juego_1 | 1 | 0 | 127.0.0.1 | n/a |  |
-2024-06-23T15:34:44.783244 | SERVER_START | Juego_1 | 1 | 0 | 192.168.4.24 | n/a |  |
-2024-06-23T15:41:03.989533 | INI_CONEX | Juego_1 | 1 | 0 | notebook1 | n/a |  |
-2024-06-23T15:41:04.005072 | PLAYER_REG | Juego_1 | 1 | 0 | 192.168.4.24 | n/a | NICK: notebook1 |
-2024-06-23T15:41:04.005072 | PLAYER_REG | Juego_1 | 0 | 1 | 192.168.4.24 | n/a | NICK: notebook1 |
-2024-06-23T15:42:20.662978 | INI_CONEX | Juego_1 | 1 | 0 | notebook1 | n/a |  |
-2024-06-23T15:42:20.677979 | PLAYER_REG | Juego_1 | 1 | 0 | 192.168.4.24 | n/a | NICK: notebook1 |
-2024-06-23T15:42:20.677979 | PLAYER_REG | Juego_1 | 0 | 1 | 192.168.4.24 | n/a | NICK: notebook1 |
-2024-06-23T15:42:45.640958 | INI_CONEX | Juego_1 | 1 | 0 | notebook1 | n/a |  |
-2024-06-23T15:42:45.656520 | PLAYER_REG | Juego_1 | 1 | 0 | 192.168.4.24 | n/a | NICK: notebook1 |
-2024-06-23T15:42:45.656520 | PLAYER_REG | Juego_1 | 0 | 1 | 192.168.4.24 | n/a | NICK: notebook1 |
-2024-06-23T15:43:15.055265 | INI_CONEX | Juego_1 | 1 | 0 | notebook1 | n/a |  |
-2024-06-23T15:43:15.070265 | PLAYER_REG | Juego_1 | 1 | 0 | 192.168.4.24 | n/a | NICK: notebook1 |
-2024-06-23T15:43:15.070265 | PLAYER_REG | Juego_1 | 0 | 1 | 192.168.4.24 | n/a | NICK: notebook1 |
-2024-06-23T15:43:17.810661 | INI_CONEX | Juego_1 | 0 | 1 | notebook1 | n/a |  |
-2024-06-23T15:43:17.810661 | GET_TEAM_DATA | Juego_1 | 1 | 0 | notebook1 | n/a |  |
-2024-06-23T15:43:17.825661 | SEND_TEAM_INFO | Juego_1 | 1 | 0 | 192.168.4.24 | n/a | NICK: notebook1 |
-2024-06-23T15:43:17.825661 | SEND_TEAM_INFO | Juego_1 | 0 | 1 | 192.168.4.24 | n/a | NICK: notebook1 |
-2024-06-23T15:43:23.400150 | GET_TEAM_DATA | Juego_1 | 0 | 1 | notebook1 | n/a |  |
-2024-06-23T15:43:23.400150 | SELECT_TEAM | Juego_1 | 1 | 0 | notebook1 | n/a |  |
-2024-06-23T15:44:21.140947 | INI_CONEX | Juego_1 | 1 | 0 | notebook1 | n/a |  |
-2024-06-23T15:44:21.155947 | PLAYER_REG | Juego_1 | 1 | 0 | 192.168.4.24 | n/a | NICK: notebook1 |
-2024-06-23T15:44:21.155947 | PLAYER_REG | Juego_1 | 0 | 1 | 192.168.4.24 | n/a | NICK: notebook1 |
-2024-06-23T15:44:25.269294 | INI_CONEX | Juego_1 | 0 | 1 | notebook1 | n/a |  |
-2024-06-23T15:44:25.269294 | GET_TEAM_DATA | Juego_1 | 1 | 0 | notebook1 | n/a |  |
-2024-06-23T15:44:25.285331 | SEND_TEAM_INFO | Juego_1 | 1 | 0 | 192.168.4.24 | n/a | NICK: notebook1 |
-2024-06-23T15:44:25.285331 | SEND_TEAM_INFO | Juego_1 | 0 | 1 | 192.168.4.24 | n/a | NICK: notebook1 |
-2024-06-23T15:44:29.492943 | GET_TEAM_DATA | Juego_1 | 0 | 1 | notebook1 | n/a |  |
-2024-06-23T15:44:29.492943 | SELECT_TEAM | Juego_1 | 1 | 0 | notebook1 | n/a |  |
-2024-06-23T15:45:26.648980 | INI_CONEX | Juego_1 | 1 | 0 | desktop1 | n/a |  |
-2024-06-23T15:45:22.136834 | PLAYER_REG | Juego_1 | 1 | 0 | 192.168.4.24 | n/a | NICK: desktop1 |
-2024-06-23T15:45:22.136834 | PLAYER_REG | Juego_1 | 0 | 1 | 192.168.4.24 | n/a | NICK: desktop1 |
-2024-06-23T15:45:27.780067 | INI_CONEX | Juego_1 | 0 | 1 | desktop1 | n/a |  |
-2024-06-23T15:45:27.780067 | GET_TEAM_DATA | Juego_1 | 1 | 0 | desktop1 | n/a |  |
-2024-06-23T15:45:23.274096 | SEND_TEAM_INFO | Juego_1 | 1 | 0 | 192.168.4.24 | n/a | NICK: desktop1 |
-2024-06-23T15:45:23.274096 | SEND_TEAM_INFO | Juego_1 | 0 | 1 | 192.168.4.24 | n/a | NICK: desktop1 |
-2024-06-23T15:45:28.959962 | GET_TEAM_DATA | Juego_1 | 0 | 1 | desktop1 | n/a |  |
-2024-06-23T15:45:28.959962 | SELECT_TEAM | Juego_1 | 1 | 0 | desktop1 | n/a |  |
+2024-06-23T22:03:42.616477 | SERVER_START | Juego_1 | 1 | 0 | 192.168.4.21 | n/a |  |
+2024-06-23T22:04:22.515253 | PLAYER_REG | Juego_1 | 1 | 0 | 192.168.4.21 | n/a | NICK: user1 |
+2024-06-23T22:04:22.515253 | PLAYER_REG | Juego_1 | 0 | 1 | 192.168.4.21 | n/a | NICK: user1 |
+2024-06-23T22:04:22.495706 | INI_CONEX | Juego_1 | 1 | 0 | user1 | n/a |  |
+2024-06-23T22:04:24.750325 | SEND_TEAM_INFO | Juego_1 | 1 | 0 | 192.168.4.21 | n/a | NICK: user1 |
+2024-06-23T22:04:24.734279 | INI_CONEX | Juego_1 | 0 | 1 | user1 | n/a |  |
+2024-06-23T22:04:24.750325 | SEND_TEAM_INFO | Juego_1 | 0 | 1 | 192.168.4.21 | n/a | NICK: user1 |
+2024-06-23T22:04:27.081071 | GET_TEAM_DATA | Juego_1 | 0 | 1 | user1 | n/a |  |
+2024-06-23T22:04:27.081071 | SELECT_TEAM | Juego_1 | 1 | 0 | user1 | n/a |  |
+2024-06-23T22:04:28.480097 | TEAM_MANAGEMENT | Juego_1 | 1 | 0 | 192.168.4.21 | n/a | NICK: user1 |
+2024-06-23T22:04:28.480097 | TEAM_MANAGEMENT | Juego_1 | 0 | 1 | 192.168.4.21 | n/a | GET_INTO_TEAM: 0 |
+2024-06-23T22:04:30.736453 | SELECT_TEAM | Juego_1 | 0 | 1 | user1 | 0 |  |
+2024-06-23T22:04:55.082817 | INI_CONEX | Juego_1 | 1 | 0 | notebook1 | n/a |  |
+2024-06-23T22:04:59.258425 | PLAYER_REG | Juego_1 | 1 | 0 | 192.168.4.21 | n/a | NICK: notebook1 |
+2024-06-23T22:04:59.258425 | PLAYER_REG | Juego_1 | 0 | 1 | 192.168.4.21 | n/a | NICK: notebook1 |
+2024-06-23T22:04:56.362863 | INI_CONEX | Juego_1 | 0 | 1 | notebook1 | n/a |  |
+2024-06-23T22:04:56.362863 | GET_TEAM_DATA | Juego_1 | 1 | 0 | notebook1 | n/a |  |
+2024-06-23T22:05:00.542647 | SEND_TEAM_INFO | Juego_1 | 1 | 0 | 192.168.4.21 | n/a | NICK: notebook1 |
+2024-06-23T22:05:00.542647 | SEND_TEAM_INFO | Juego_1 | 0 | 1 | 192.168.4.21 | n/a | NICK: notebook1 |
+2024-06-23T22:04:57.766413 | GET_TEAM_DATA | Juego_1 | 0 | 1 | notebook1 | n/a |  |
+2024-06-23T22:04:57.766413 | SELECT_TEAM | Juego_1 | 1 | 0 | notebook1 | n/a |  |
+2024-06-23T22:05:24.422749 | TEAM_MANAGEMENT | Juego_1 | 1 | 0 | 192.168.4.21 | n/a | NICK: notebook1 |
+2024-06-23T22:05:24.422749 | TEAM_MANAGEMENT | Juego_1 | 0 | 1 | 192.168.4.21 | n/a | GET_INTO_TEAM: 1 |
+2024-06-23T22:05:24.423749 | GAME_RUNNING | Juego_1 | 1 | 0 | 192.168.4.21 | 0 | NPLAYERS: 1 |
+2024-06-23T22:05:24.500092 | GAME_ACTIONS | Juego_1 | 1 | 0 | user1 | 0 | SEND_DICE |
+2024-06-23T22:05:21.557696 | SELECT_TEAM | Juego_1 | 0 | 1 | notebook1 | 1 |  |
+2024-06-23T22:05:44.476765 | PLAYER_REG | Juego_1 | 1 | 0 | 192.168.4.21 | n/a | NICK: user2 |
+2024-06-23T22:05:44.476765 | PLAYER_REG | Juego_1 | 0 | 1 | 192.168.4.21 | n/a | NICK: user2 |
+2024-06-23T22:05:44.461365 | INI_CONEX | Juego_1 | 1 | 0 | user2 | n/a |  |
+2024-06-23T22:05:49.454044 | SEND_TEAM_INFO | Juego_1 | 1 | 0 | 192.168.4.21 | n/a | NICK: user2 |
+2024-06-23T22:05:49.438576 | GET_TEAM_DATA | Juego_1 | 1 | 0 | user2 | n/a |  |
+2024-06-23T22:05:49.454044 | SEND_TEAM_INFO | Juego_1 | 0 | 1 | 192.168.4.21 | n/a | NICK: user2 |
+2024-06-23T22:05:54.515185 | GET_TEAM_DATA | Juego_1 | 0 | 1 | user2 | n/a |  |
+2024-06-23T22:05:54.515185 | SELECT_TEAM | Juego_1 | 1 | 0 | user2 | n/a |  |
+2024-06-23T22:05:58.370174 | GAME_ACTIONS | Juego_1 | 0 | 1 | user1 | 0 | SEND_DICE: 2 |
+2024-06-23T22:05:58.764146 | GAME_RUNNING | Juego_1 | 0 | 1 | 192.168.4.21 | 0 | NPLAYERS: 1 |
+2024-06-23T22:05:58.764146 | GAME_RUNNING | Juego_1 | 1 | 0 | 192.168.4.21 | 1 | NPLAYERS: 1 |
+2024-06-23T22:05:54.643337 | GAME_ACTIONS | Juego_1 | 1 | 0 | notebook1 | 1 | SEND_DICE |
+2024-06-23T22:06:03.808354 | TEAM_MANAGEMENT | Juego_1 | 1 | 0 | 192.168.4.21 | n/a | NICK: user2 |
+2024-06-23T22:06:03.808354 | CREATE_NEW_TEAM | Juego_1 | 1 | 0 | 192.168.4.21 | n/a | CREATE_NEW_TEAM: 2 |
+2024-06-23T22:06:03.808354 | CREATE_NEW_TEAM | Juego_1 | 0 | 1 | 192.168.4.21 | n/a | CREATE_NEW_TEAM: 2 |
+2024-06-23T22:06:03.808861 | TEAM_MANAGEMENT | Juego_1 | 0 | 1 | 192.168.4.21 | n/a | GET_INTO_TEAM: 2 |
+2024-06-23T22:06:03.138183 | GAME_ACTIONS | Juego_1 | 0 | 1 | notebook1 | 1 | SEND_DICE: 2 |
+2024-06-23T22:06:08.790804 | GAME_RUNNING | Juego_1 | 0 | 1 | 192.168.4.21 | 1 | NPLAYERS: 1 |
+2024-06-23T22:06:08.790804 | GAME_RUNNING | Juego_1 | 1 | 0 | 192.168.4.21 | 2 | NPLAYERS: 1 |
+2024-06-23T22:06:08.868690 | SELECT_TEAM | Juego_1 | 0 | 1 | user2 | 2 |  |
+2024-06-23T22:06:13.897729 | GAME_ACTIONS | Juego_1 | 1 | 0 | user2 | 2 | SEND_DICE |
+2024-06-23T22:06:15.782588 | INI_CONEX | Juego_1 | 1 | 0 | notebook2 | n/a |  |
+2024-06-23T22:06:19.956697 | PLAYER_REG | Juego_1 | 1 | 0 | 192.168.4.21 | n/a | NICK: notebook2 |
+2024-06-23T22:06:19.956697 | PLAYER_REG | Juego_1 | 0 | 1 | 192.168.4.21 | n/a | NICK: notebook2 |
+2024-06-23T22:06:20.009012 | INI_CONEX | Juego_1 | 0 | 1 | notebook2 | n/a |  |
+2024-06-23T22:06:20.009012 | GET_TEAM_DATA | Juego_1 | 1 | 0 | notebook2 | n/a |  |
+2024-06-23T22:06:24.177698 | SEND_TEAM_INFO | Juego_1 | 1 | 0 | 192.168.4.21 | n/a | NICK: notebook2 |
+2024-06-23T22:06:24.177698 | SEND_TEAM_INFO | Juego_1 | 0 | 1 | 192.168.4.21 | n/a | NICK: notebook2 |
+2024-06-23T22:06:24.333163 | GET_TEAM_DATA | Juego_1 | 0 | 1 | notebook2 | n/a |  |
+2024-06-23T22:06:24.333163 | SELECT_TEAM | Juego_1 | 1 | 0 | notebook2 | n/a |  |
+2024-06-23T22:06:29.660876 | GAME_ACTIONS | Juego_1 | 0 | 1 | user2 | 2 | SEND_DICE: 2 |
+2024-06-23T22:06:31.003847 | GAME_ACTIONS | Juego_1 | 1 | 0 | user1 | 0 | GET_GAME_STATS |
+2024-06-23T22:06:30.972586 | SEND_GAME_STATS | Juego_1 | 1 | 0 | 192.168.4.21 |  |  |
+2024-06-23T22:06:30.972586 | SEND_GAME_STATS | Juego_1 | 0 | 1 | 192.168.4.21 |  | Team: 0 - Points 2 +Team: 1 - Points 2 +Team: 2 - Points 2 + |
+2024-06-23T22:06:26.944329 | GAME_ACTIONS | Juego_1 | 1 | 0 | notebook1 | 1 | GET_GAME_STATS |
+2024-06-23T22:06:31.026908 | GAME_ACTIONS | Juego_1 | 0 | 1 | user1 | 0 | GET_GAME_STATS |
+2024-06-23T22:06:31.226877 | GAME_ACTIONS | Juego_1 | 0 | 1 | user2 | 2 | GET_GAME_STATS |
+2024-06-23T22:06:27.195426 | GAME_ACTIONS | Juego_1 | 0 | 1 | notebook1 | 1 | GET_GAME_STATS |
+2024-06-23T22:06:33.023217 | GAME_RUNNING | Juego_1 | 1 | 0 | 192.168.4.21 | 0 | NPLAYERS: 1 |
+2024-06-23T22:06:33.085936 | GAME_ACTIONS | Juego_1 | 1 | 0 | user1 | 0 | SEND_DICE |
+2024-06-23T22:06:37.030468 | TEAM_MANAGEMENT | Juego_1 | 1 | 0 | 192.168.4.21 | n/a | NICK: notebook2 |
+2024-06-23T22:06:37.030468 | VOTE_MANAGEMENT | Juego_1 | 1 | 0 | 192.168.4.21 | 2 | NICK: notebook2 |
+2024-06-23T22:06:37.092716 | GAME_ACTIONS | Juego_1 | 1 | 0 | user2 | 2 | VOTE_MANAGEMENT |
+2024-06-23T22:06:41.112409 | GAME_ACTIONS | Juego_1 | 0 | 1 | user2 | 2 | VOTE_MANAGEMENT: notebook2 -> y |
+2024-06-23T22:06:42.100825 | TEAM_MANAGEMENT | Juego_1 | 0 | 1 | 192.168.4.21 | n/a | GET_INTO_TEAM: 2 |
+2024-06-23T22:06:43.131813 | VOTE_MANAGEMENT | Juego_1 | 0 | 1 | 192.168.4.21 | 2 | NICK: notebook2 |
+2024-06-23T22:06:43.131813 | VOTE_MANAGEMENT | Juego_1 | 0 | 1 | 192.168.4.21 | 2 | NICK: notebook2 |
+2024-06-23T22:06:43.711465 | GAME_ACTIONS | Juego_1 | 0 | 1 | user1 | 0 | SEND_DICE: 7 |
+2024-06-23T22:06:41.337033 | SELECT_TEAM | Juego_1 | 0 | 1 | notebook2 | 2 |  |
+2024-06-23T22:06:46.089705 | GAME_RUNNING | Juego_1 | 0 | 1 | 192.168.4.21 | 0 | NPLAYERS: 1 |
+2024-06-23T22:06:46.089705 | GAME_RUNNING | Juego_1 | 1 | 0 | 192.168.4.21 | 1 | NPLAYERS: 1 |
+2024-06-23T22:06:42.063785 | GAME_ACTIONS | Juego_1 | 1 | 0 | notebook1 | 1 | SEND_DICE |
+2024-06-23T22:06:43.983024 | GAME_ACTIONS | Juego_1 | 0 | 1 | notebook1 | 1 | SEND_DICE: 5 |
+2024-06-23T22:06:56.142378 | GAME_ACTIONS | Juego_1 | 1 | 0 | user2 | 2 | SEND_DICE |
+2024-06-23T22:06:56.111597 | GAME_RUNNING | Juego_1 | 0 | 1 | 192.168.4.21 | 1 | NPLAYERS: 1 |
+2024-06-23T22:06:56.111597 | GAME_RUNNING | Juego_1 | 1 | 0 | 192.168.4.21 | 2 | NPLAYERS: 2 |
+2024-06-23T22:06:52.172721 | GAME_ACTIONS | Juego_1 | 1 | 0 | notebook2 | 2 | SEND_DICE |
+2024-06-23T22:06:58.911753 | GAME_ACTIONS | Juego_1 | 0 | 1 | user2 | 2 | SEND_DICE: 9 |
+2024-06-23T22:06:56.995259 | GAME_ACTIONS | Juego_1 | 0 | 1 | notebook2 | 2 | SEND_DICE: 6 |
+2024-06-23T22:07:06.136861 | GAME_RUNNING | Juego_1 | 0 | 1 | 192.168.4.21 | 2 | NPLAYERS: 2 |
+2024-06-23T22:07:06.152908 | GAME_ACTIONS | Juego_1 | 1 | 0 | user2 | 2 | GET_GAME_STATS |
+2024-06-23T22:07:06.136861 | SEND_GAME_STATS | Juego_1 | 1 | 0 | 192.168.4.21 |  |  |
+2024-06-23T22:07:06.136861 | SEND_GAME_STATS | Juego_1 | 0 | 1 | 192.168.4.21 |  | Team: 0 - Points 9 +Team: 1 - Points 7 +Team: 2 - Points 17 + |
+2024-06-23T22:07:02.040015 | GAME_ACTIONS | Juego_1 | 1 | 0 | notebook1 | 1 | GET_GAME_STATS |
+2024-06-23T22:07:02.072651 | GAME_ACTIONS | Juego_1 | 1 | 0 | notebook2 | 2 | GET_GAME_STATS |
+2024-06-23T22:07:06.229489 | GAME_ACTIONS | Juego_1 | 1 | 0 | user1 | 0 | GET_GAME_STATS |
+2024-06-23T22:07:02.166893 | GAME_ACTIONS | Juego_1 | 0 | 1 | notebook1 | 1 | GET_GAME_STATS |
+2024-06-23T22:07:06.417492 | GAME_ACTIONS | Juego_1 | 0 | 1 | user1 | 0 | GET_GAME_STATS |
+2024-06-23T22:07:02.371993 | GAME_ACTIONS | Juego_1 | 0 | 1 | notebook2 | 2 | GET_GAME_STATS |
+2024-06-23T22:07:08.182910 | GAME_RUNNING | Juego_1 | 1 | 0 | 192.168.4.21 | 0 | NPLAYERS: 1 |
+2024-06-23T22:07:08.213744 | GAME_ACTIONS | Juego_1 | 1 | 0 | user1 | 0 | SEND_DICE |
+2024-06-23T22:07:05.373198 | INI_CONEX | Juego_1 | 1 | 0 | notebook3 | n/a |  |
+2024-06-23T22:07:09.539466 | PLAYER_REG | Juego_1 | 1 | 0 | 192.168.4.21 | n/a | NICK: notebook3 |
+2024-06-23T22:07:09.539466 | PLAYER_REG | Juego_1 | 0 | 1 | 192.168.4.21 | n/a | NICK: notebook3 |
+2024-06-23T22:07:10.395617 | INI_CONEX | Juego_1 | 0 | 1 | notebook3 | n/a |  |
+2024-06-23T22:07:10.395617 | GET_TEAM_DATA | Juego_1 | 1 | 0 | notebook3 | n/a |  |
+2024-06-23T22:07:14.564727 | SEND_TEAM_INFO | Juego_1 | 1 | 0 | 192.168.4.21 | n/a | NICK: notebook3 |
+2024-06-23T22:07:14.564727 | SEND_TEAM_INFO | Juego_1 | 0 | 1 | 192.168.4.21 | n/a | NICK: notebook3 |
+2024-06-23T22:07:15.546079 | GET_TEAM_DATA | Juego_1 | 0 | 1 | notebook3 | n/a |  |
+2024-06-23T22:07:15.546079 | SELECT_TEAM | Juego_1 | 1 | 0 | notebook3 | n/a |  |
+2024-06-23T22:07:21.950970 | TEAM_MANAGEMENT | Juego_1 | 1 | 0 | 192.168.4.21 | n/a | NICK: notebook3 |
+2024-06-23T22:07:17.855391 | SELECT_TEAM | Juego_1 | 0 | 1 | notebook3 | 3 |  |
+2024-06-23T22:07:22.861427 | GET_TEAM_DATA | Juego_1 | 1 | 0 | notebook3 | n/a |  |
+2024-06-23T22:07:27.032320 | SEND_TEAM_INFO | Juego_1 | 1 | 0 | 192.168.4.21 | n/a | NICK: notebook3 |
+2024-06-23T22:07:27.032320 | SEND_TEAM_INFO | Juego_1 | 0 | 1 | 192.168.4.21 | n/a | NICK: notebook3 |
+2024-06-23T22:07:28.044144 | GET_TEAM_DATA | Juego_1 | 0 | 1 | notebook3 | n/a |  |
+2024-06-23T22:07:28.044144 | SELECT_TEAM | Juego_1 | 1 | 0 | notebook3 | n/a |  |
+2024-06-23T22:07:34.006749 | TEAM_MANAGEMENT | Juego_1 | 1 | 0 | 192.168.4.21 | n/a | NICK: notebook3 |
+2024-06-23T22:07:34.006749 | VOTE_MANAGEMENT | Juego_1 | 1 | 0 | 192.168.4.21 | 2 | NICK: notebook3 |
+2024-06-23T22:07:38.457490 | GAME_ACTIONS | Juego_1 | 1 | 0 | user2 | 2 | VOTE_MANAGEMENT |
+2024-06-23T22:07:34.364309 | GAME_ACTIONS | Juego_1 | 1 | 0 | notebook2 | 2 | VOTE_MANAGEMENT |
+2024-06-23T22:07:38.900808 | GAME_ACTIONS | Juego_1 | 0 | 1 | notebook2 | 2 | VOTE_MANAGEMENT: notebook3 -> y |
+2024-06-23T22:07:46.393869 | GAME_ACTIONS | Juego_1 | 0 | 1 | user2 | 2 | VOTE_MANAGEMENT: notebook3 -> y |
+2024-06-23T22:07:46.581936 | TEAM_MANAGEMENT | Juego_1 | 0 | 1 | 192.168.4.21 | n/a | GET_INTO_TEAM: 2 |
+2024-06-23T22:07:47.611934 | VOTE_MANAGEMENT | Juego_1 | 0 | 1 | 192.168.4.21 | 2 | NICK: notebook3 |
+2024-06-23T22:07:47.611934 | VOTE_MANAGEMENT | Juego_1 | 0 | 1 | 192.168.4.21 | 2 | NICK: notebook3 |
+2024-06-23T22:07:47.611934 | VOTE_MANAGEMENT | Juego_1 | 0 | 1 | 192.168.4.21 | 2 | NICK: notebook3 |
+2024-06-23T22:07:48.798718 | GAME_ACTIONS | Juego_1 | 0 | 1 | user1 | 0 | SEND_DICE: 10 |
+2024-06-23T22:07:44.880272 | SELECT_TEAM | Juego_1 | 0 | 1 | notebook3 | 2 |  |
+2024-06-23T22:07:51.677871 | GAME_RUNNING | Juego_1 | 0 | 1 | 192.168.4.21 | 0 | NPLAYERS: 1 |
+2024-06-23T22:07:47.580767 | GAME_ACTIONS | Juego_1 | 1 | 0 | notebook1 | 1 | SEND_DICE |
+2024-06-23T22:07:51.677871 | GAME_RUNNING | Juego_1 | 1 | 0 | 192.168.4.21 | 1 | NPLAYERS: 1 |
+2024-06-23T22:07:50.819554 | GAME_ACTIONS | Juego_1 | 0 | 1 | notebook1 | 1 | SEND_DICE: 10 |
+2024-06-23T22:08:01.751587 | GAME_ACTIONS | Juego_1 | 1 | 0 | user2 | 2 | SEND_DICE |
+2024-06-23T22:08:01.705913 | GAME_RUNNING | Juego_1 | 0 | 1 | 192.168.4.21 | 1 | NPLAYERS: 1 |
+2024-06-23T22:08:01.705913 | GAME_RUNNING | Juego_1 | 1 | 0 | 192.168.4.21 | 2 | NPLAYERS: 3 |
+2024-06-23T22:07:57.642500 | GAME_ACTIONS | Juego_1 | 1 | 0 | notebook3 | 2 | SEND_DICE |
+2024-06-23T22:07:57.658501 | GAME_ACTIONS | Juego_1 | 1 | 0 | notebook2 | 2 | SEND_DICE |
+2024-06-23T22:08:01.235799 | GAME_ACTIONS | Juego_1 | 0 | 1 | notebook2 | 2 | SEND_DICE: 2 |
+2024-06-23T22:08:02.883542 | GAME_ACTIONS | Juego_1 | 0 | 1 | notebook3 | 2 | SEND_DICE: 9 |
+2024-06-23T22:08:10.360874 | GAME_ACTIONS | Juego_1 | 0 | 1 | user2 | 2 | SEND_DICE: 3 |
+2024-06-23T22:08:11.755392 | GAME_ACTIONS | Juego_1 | 1 | 0 | user1 | 0 | GET_GAME_STATS |
+2024-06-23T22:08:11.724221 | SEND_GAME_STATS | Juego_1 | 1 | 0 | 192.168.4.21 |  |  |
+2024-06-23T22:08:11.724221 | SEND_GAME_STATS | Juego_1 | 0 | 1 | 192.168.4.21 |  | Team: 0 - Points 19 +Team: 1 - Points 17 +Team: 2 - Points 31 + |
+2024-06-23T22:08:07.676712 | GAME_ACTIONS | Juego_1 | 1 | 0 | notebook3 | 2 | GET_GAME_STATS |
+2024-06-23T22:08:07.691732 | GAME_ACTIONS | Juego_1 | 1 | 0 | notebook1 | 1 | GET_GAME_STATS |
+2024-06-23T22:08:07.707277 | GAME_ACTIONS | Juego_1 | 1 | 0 | notebook2 | 2 | GET_GAME_STATS |
+2024-06-23T22:08:11.773477 | GAME_ACTIONS | Juego_1 | 0 | 1 | user1 | 0 | GET_GAME_STATS |
+2024-06-23T22:08:11.850559 | GAME_ACTIONS | Juego_1 | 0 | 1 | user2 | 2 | GET_GAME_STATS |
+2024-06-23T22:08:07.972356 | GAME_ACTIONS | Juego_1 | 0 | 1 | notebook3 | 2 | GET_GAME_STATS |
+2024-06-23T22:08:08.002877 | GAME_ACTIONS | Juego_1 | 0 | 1 | notebook1 | 1 | GET_GAME_STATS |
+2024-06-23T22:08:08.018875 | GAME_ACTIONS | Juego_1 | 0 | 1 | notebook2 | 2 | GET_GAME_STATS |
+2024-06-23T22:08:13.850825 | GAME_ACTIONS | Juego_1 | 1 | 0 | user2 | 2 | END_GAME |
+2024-06-23T22:08:13.834376 | GAME_ACTIONS | Juego_1 | 1 | 0 | user1 | 0 | END_GAME |
+2024-06-23T22:08:13.771362 | SEND_GAME_END | Juego_1 | 1 | 0 | 192.168.4.21 |  |  |
+2024-06-23T22:08:13.771362 | SEND_GAME_END | Juego_1 | 0 | 1 | 192.168.4.21 |  |  |
+2024-06-23T22:08:09.722369 | GAME_ACTIONS | Juego_1 | 1 | 0 | notebook2 | 2 | END_GAME |
+2024-06-23T22:08:09.722369 | GAME_ACTIONS | Juego_1 | 1 | 0 | notebook3 | 2 | END_GAME |
+2024-06-23T22:08:09.769377 | GAME_ACTIONS | Juego_1 | 1 | 0 | notebook1 | 1 | END_GAME |
+2024-06-23T22:09:25.826188 | SERVER_START | Juego_4 | 1 | 0 | 192.168.4.21 | n/a |  |
+2024-06-23T22:09:47.880725 | INI_CONEX | Juego_4 | 1 | 0 | notebook1 | n/a |  |
+2024-06-23T22:09:52.065360 | PLAYER_REG | Juego_4 | 1 | 0 | 192.168.4.21 | n/a | NICK: notebook1 |
+2024-06-23T22:09:52.065360 | PLAYER_REG | Juego_4 | 0 | 1 | 192.168.4.21 | n/a | NICK: notebook1 |
+2024-06-23T22:09:51.375287 | INI_CONEX | Juego_4 | 0 | 1 | notebook1 | n/a |  |
+2024-06-23T22:09:51.375287 | GET_TEAM_DATA | Juego_4 | 1 | 0 | notebook1 | n/a |  |
+2024-06-23T22:09:55.544620 | SEND_TEAM_INFO | Juego_4 | 1 | 0 | 192.168.4.21 | n/a | NICK: notebook1 |
+2024-06-23T22:09:55.544620 | SEND_TEAM_INFO | Juego_4 | 0 | 1 | 192.168.4.21 | n/a | NICK: notebook1 |
+2024-06-23T22:09:53.444161 | INI_CONEX | Juego_4 | 1 | 0 | notebook2 | n/a |  |
+2024-06-23T22:09:57.611970 | PLAYER_REG | Juego_4 | 1 | 0 | 192.168.4.21 | n/a | NICK: notebook2 |
+2024-06-23T22:09:57.611970 | PLAYER_REG | Juego_4 | 0 | 1 | 192.168.4.21 | n/a | NICK: notebook2 |
+2024-06-23T22:09:54.983687 | GET_TEAM_DATA | Juego_4 | 0 | 1 | notebook1 | n/a |  |
+2024-06-23T22:09:54.983687 | SELECT_TEAM | Juego_4 | 1 | 0 | notebook1 | n/a |  |
+2024-06-23T22:09:55.942512 | INI_CONEX | Juego_4 | 0 | 1 | notebook2 | n/a |  |
+2024-06-23T22:09:55.942512 | GET_TEAM_DATA | Juego_4 | 1 | 0 | notebook2 | n/a |  |
+2024-06-23T22:10:00.104367 | SEND_TEAM_INFO | Juego_4 | 1 | 0 | 192.168.4.21 | n/a | NICK: notebook2 |
+2024-06-23T22:10:00.104367 | SEND_TEAM_INFO | Juego_4 | 0 | 1 | 192.168.4.21 | n/a | NICK: notebook2 |
+2024-06-23T22:09:56.535224 | INI_CONEX | Juego_4 | 1 | 0 | notebook3 | n/a |  |
+2024-06-23T22:10:00.703028 | PLAYER_REG | Juego_4 | 1 | 0 | 192.168.4.21 | n/a | NICK: notebook3 |
+2024-06-23T22:10:00.703028 | PLAYER_REG | Juego_4 | 0 | 1 | 192.168.4.21 | n/a | NICK: notebook3 |
+2024-06-23T22:09:58.538176 | GET_TEAM_DATA | Juego_4 | 0 | 1 | notebook2 | n/a |  |
+2024-06-23T22:09:58.538176 | SELECT_TEAM | Juego_4 | 1 | 0 | notebook2 | n/a |  |
+2024-06-23T22:09:58.707290 | INI_CONEX | Juego_4 | 0 | 1 | notebook3 | n/a |  |
+2024-06-23T22:09:58.707290 | GET_TEAM_DATA | Juego_4 | 1 | 0 | notebook3 | n/a |  |
+2024-06-23T22:10:02.887218 | SEND_TEAM_INFO | Juego_4 | 1 | 0 | 192.168.4.21 | n/a | NICK: notebook3 |
+2024-06-23T22:10:02.887218 | SEND_TEAM_INFO | Juego_4 | 0 | 1 | 192.168.4.21 | n/a | NICK: notebook3 |
+2024-06-23T22:10:03.843075 | TEAM_MANAGEMENT | Juego_4 | 1 | 0 | 192.168.4.21 | n/a | NICK: notebook1 |
+2024-06-23T22:10:03.843075 | TEAM_MANAGEMENT | Juego_4 | 0 | 1 | 192.168.4.21 | n/a | GET_INTO_TEAM: 0 |
+2024-06-23T22:10:00.978726 | GET_TEAM_DATA | Juego_4 | 0 | 1 | notebook3 | n/a |  |
+2024-06-23T22:10:00.978726 | SELECT_TEAM | Juego_4 | 1 | 0 | notebook3 | n/a |  |
+2024-06-23T22:10:03.174186 | SELECT_TEAM | Juego_4 | 0 | 1 | notebook1 | 0 |  |
+2024-06-23T22:10:09.929517 | TEAM_MANAGEMENT | Juego_4 | 1 | 0 | 192.168.4.21 | n/a | NICK: notebook2 |
+2024-06-23T22:10:09.929517 | VOTE_MANAGEMENT | Juego_4 | 1 | 0 | 192.168.4.21 | 0 | NICK: notebook2 |
+2024-06-23T22:10:08.195490 | GAME_ACTIONS | Juego_4 | 1 | 0 | notebook1 | 0 | VOTE_MANAGEMENT |
+2024-06-23T22:10:10.347435 | GAME_ACTIONS | Juego_4 | 0 | 1 | notebook1 | 0 | VOTE_MANAGEMENT: notebook2 -> y |
+2024-06-23T22:10:15.017218 | TEAM_MANAGEMENT | Juego_4 | 0 | 1 | 192.168.4.21 | n/a | GET_INTO_TEAM: 0 |
+2024-06-23T22:10:16.033103 | VOTE_MANAGEMENT | Juego_4 | 0 | 1 | 192.168.4.21 | 0 | NICK: notebook2 |
+2024-06-23T22:10:16.033103 | VOTE_MANAGEMENT | Juego_4 | 0 | 1 | 192.168.4.21 | 0 | NICK: notebook2 |
+2024-06-23T22:10:13.245855 | SELECT_TEAM | Juego_4 | 0 | 1 | notebook2 | 0 |  |
+2024-06-23T22:10:33.164682 | TEAM_MANAGEMENT | Juego_4 | 1 | 0 | 192.168.4.21 | n/a | NICK: notebook3 |
+2024-06-23T22:10:33.164682 | VOTE_MANAGEMENT | Juego_4 | 1 | 0 | 192.168.4.21 | 0 | NICK: notebook3 |
+2024-06-23T22:10:32.046898 | GAME_ACTIONS | Juego_4 | 1 | 0 | notebook1 | 0 | VOTE_MANAGEMENT |
+2024-06-23T22:10:32.076910 | GAME_ACTIONS | Juego_4 | 1 | 0 | notebook2 | 0 | VOTE_MANAGEMENT |
+2024-06-23T22:10:35.061017 | GAME_ACTIONS | Juego_4 | 0 | 1 | notebook1 | 0 | VOTE_MANAGEMENT: notebook3 -> y |
+2024-06-23T22:10:36.883546 | GAME_ACTIONS | Juego_4 | 0 | 1 | notebook2 | 0 | VOTE_MANAGEMENT: notebook3 -> y |
+2024-06-23T22:10:41.279101 | TEAM_MANAGEMENT | Juego_4 | 0 | 1 | 192.168.4.21 | n/a | GET_INTO_TEAM: 0 |
+2024-06-23T22:10:37.709585 | SELECT_TEAM | Juego_4 | 0 | 1 | notebook3 | 0 |  |
+2024-06-23T22:10:42.308968 | VOTE_MANAGEMENT | Juego_4 | 0 | 1 | 192.168.4.21 | 0 | NICK: notebook3 |
+2024-06-23T22:10:42.308968 | VOTE_MANAGEMENT | Juego_4 | 0 | 1 | 192.168.4.21 | 0 | NICK: notebook3 |
+2024-06-23T22:10:42.308968 | VOTE_MANAGEMENT | Juego_4 | 0 | 1 | 192.168.4.21 | 0 | NICK: notebook3 |
+2024-06-23T22:10:44.064613 | INI_CONEX | Juego_4 | 1 | 0 | notebook4 | n/a |  |
+2024-06-23T22:10:48.239753 | PLAYER_REG | Juego_4 | 1 | 0 | 192.168.4.21 | n/a | NICK: notebook4 |
+2024-06-23T22:10:48.239753 | PLAYER_REG | Juego_4 | 0 | 1 | 192.168.4.21 | n/a | NICK: notebook4 |
+2024-06-23T22:10:45.690331 | INI_CONEX | Juego_4 | 0 | 1 | notebook4 | n/a |  |
+2024-06-23T22:10:45.690331 | GET_TEAM_DATA | Juego_4 | 1 | 0 | notebook4 | n/a |  |
+2024-06-23T22:10:49.850287 | SEND_TEAM_INFO | Juego_4 | 1 | 0 | 192.168.4.21 | n/a | NICK: notebook4 |
+2024-06-23T22:10:49.850287 | SEND_TEAM_INFO | Juego_4 | 0 | 1 | 192.168.4.21 | n/a | NICK: notebook4 |
+2024-06-23T22:10:46.597060 | GET_TEAM_DATA | Juego_4 | 0 | 1 | notebook4 | n/a |  |
+2024-06-23T22:10:46.597060 | SELECT_TEAM | Juego_4 | 1 | 0 | notebook4 | n/a |  |
+2024-06-23T22:10:54.842055 | TEAM_MANAGEMENT | Juego_4 | 1 | 0 | 192.168.4.21 | n/a | NICK: notebook4 |
+2024-06-23T22:10:54.842055 | TEAM_MANAGEMENT | Juego_4 | 0 | 1 | 192.168.4.21 | n/a | REJECT: 0 |
+2024-06-23T22:10:51.505872 | SELECT_TEAM | Juego_4 | 0 | 1 | notebook4 | 0 |  |
+2024-06-23T22:10:56.527269 | GET_TEAM_DATA | Juego_4 | 1 | 0 | notebook4 | n/a |  |
+2024-06-23T22:11:00.698802 | SEND_TEAM_INFO | Juego_4 | 1 | 0 | 192.168.4.21 | n/a | NICK: notebook4 |
+2024-06-23T22:11:00.698802 | SEND_TEAM_INFO | Juego_4 | 0 | 1 | 192.168.4.21 | n/a | NICK: notebook4 |
+2024-06-23T22:10:57.410072 | GET_TEAM_DATA | Juego_4 | 0 | 1 | notebook4 | n/a |  |
+2024-06-23T22:10:57.410072 | SELECT_TEAM | Juego_4 | 1 | 0 | notebook4 | n/a |  |
+2024-06-23T22:11:04.927658 | PLAYER_REG | Juego_4 | 1 | 0 | 192.168.4.21 | n/a | NICK: user1 |
+2024-06-23T22:11:04.927658 | PLAYER_REG | Juego_4 | 0 | 1 | 192.168.4.21 | n/a | NICK: user1 |
+2024-06-23T22:11:04.908128 | INI_CONEX | Juego_4 | 1 | 0 | user1 | n/a |  |
+2024-06-23T22:11:06.182864 | INI_CONEX | Juego_4 | 0 | 1 | user1 | n/a |  |
+2024-06-23T22:11:06.182864 | GET_TEAM_DATA | Juego_4 | 1 | 0 | user1 | n/a |  |
+2024-06-23T22:11:07.571195 | GET_TEAM_DATA | Juego_4 | 0 | 1 | user1 | n/a |  |
+2024-06-23T22:11:07.571195 | SELECT_TEAM | Juego_4 | 1 | 0 | user1 | n/a |  |
+2024-06-23T22:11:16.334399 | TEAM_MANAGEMENT | Juego_4 | 1 | 0 | 192.168.4.21 | n/a | NICK: user1 |
+2024-06-23T22:11:16.334399 | CREATE_NEW_TEAM | Juego_4 | 1 | 0 | 192.168.4.21 | n/a | CREATE_NEW_TEAM: 2 |
+2024-06-23T22:11:16.334399 | CREATE_NEW_TEAM | Juego_4 | 0 | 1 | 192.168.4.21 | n/a | CREATE_NEW_TEAM: 2 |
+2024-06-23T22:11:12.307304 | GAME_ACTIONS | Juego_4 | 1 | 0 | notebook1 | 0 | SEND_DICE |
+2024-06-23T22:11:12.307304 | GAME_ACTIONS | Juego_4 | 1 | 0 | notebook2 | 0 | SEND_DICE |
+2024-06-23T22:11:16.334399 | TEAM_MANAGEMENT | Juego_4 | 0 | 1 | 192.168.4.21 | n/a | GET_INTO_TEAM: 2 |
+2024-06-23T22:11:16.335401 | GAME_RUNNING | Juego_4 | 1 | 0 | 192.168.4.21 | 0 | NPLAYERS: 3 |
+2024-06-23T22:11:12.353864 | GAME_ACTIONS | Juego_4 | 1 | 0 | notebook3 | 0 | SEND_DICE |
+2024-06-23T22:11:17.021053 | SELECT_TEAM | Juego_4 | 0 | 1 | user1 | 2 |  |
+2024-06-23T22:11:23.535106 | TEAM_MANAGEMENT | Juego_4 | 1 | 0 | 192.168.4.21 | n/a | NICK: notebook4 |
+2024-06-23T22:11:23.535106 | VOTE_MANAGEMENT | Juego_4 | 1 | 0 | 192.168.4.21 | 2 | NICK: notebook4 |
+2024-06-23T22:11:21.499687 | GAME_ACTIONS | Juego_4 | 0 | 1 | notebook1 | 0 | SEND_DICE: 5 |
+2024-06-23T22:11:23.139737 | GAME_ACTIONS | Juego_4 | 0 | 1 | notebook2 | 0 | SEND_DICE: 10 |
+2024-06-23T22:11:27.651109 | GAME_ACTIONS | Juego_4 | 1 | 0 | user1 | 2 | VOTE_MANAGEMENT |
+2024-06-23T22:11:24.937797 | GAME_ACTIONS | Juego_4 | 0 | 1 | notebook3 | 0 | SEND_DICE: 4 |
+2024-06-23T22:11:29.393247 | GAME_RUNNING | Juego_4 | 0 | 1 | 192.168.4.21 | 0 | NPLAYERS: 3 |
+2024-06-23T22:11:29.393247 | GAME_RUNNING | Juego_4 | 1 | 0 | 192.168.4.21 | 1 | NPLAYERS: 0 |
+2024-06-23T22:11:35.449732 | GAME_ACTIONS | Juego_4 | 0 | 1 | user1 | 2 | VOTE_MANAGEMENT: notebook4 -> y |
+2024-06-23T22:11:35.701112 | TEAM_MANAGEMENT | Juego_4 | 0 | 1 | 192.168.4.21 | n/a | GET_INTO_TEAM: 2 |
+2024-06-23T22:11:32.101658 | SELECT_TEAM | Juego_4 | 0 | 1 | notebook4 | 2 |  |
+2024-06-23T22:11:36.720673 | VOTE_MANAGEMENT | Juego_4 | 0 | 1 | 192.168.4.21 | 2 | NICK: notebook4 |
+2024-06-23T22:11:36.720673 | VOTE_MANAGEMENT | Juego_4 | 0 | 1 | 192.168.4.21 | 2 | NICK: notebook4 |
+2024-06-23T22:11:39.438921 | GAME_ACTIONS | Juego_4 | 1 | 0 | user1 | 2 | SEND_DICE |
+2024-06-23T22:11:39.423202 | GAME_RUNNING | Juego_4 | 0 | 1 | 192.168.4.21 | 1 | NPLAYERS: 0 |
+2024-06-23T22:11:39.423202 | GAME_RUNNING | Juego_4 | 1 | 0 | 192.168.4.21 | 2 | NPLAYERS: 2 |
+2024-06-23T22:11:37.112792 | GAME_ACTIONS | Juego_4 | 1 | 0 | notebook4 | 2 | SEND_DICE |
+2024-06-23T22:11:50.685212 | PLAYER_REG | Juego_4 | 1 | 0 | 192.168.4.21 | n/a | NICK: user2 |
+2024-06-23T22:11:50.685212 | PLAYER_REG | Juego_4 | 0 | 1 | 192.168.4.21 | n/a | NICK: user2 |
+2024-06-23T22:11:50.665167 | INI_CONEX | Juego_4 | 1 | 0 | user2 | n/a |  |
+2024-06-23T22:11:52.051371 | SEND_TEAM_INFO | Juego_4 | 1 | 0 | 192.168.4.21 | n/a | NICK: user2 |
+2024-06-23T22:11:52.036177 | INI_CONEX | Juego_4 | 0 | 1 | user2 | n/a |  |
+2024-06-23T22:11:52.036177 | GET_TEAM_DATA | Juego_4 | 1 | 0 | user2 | n/a |  |
+2024-06-23T22:11:53.550359 | GET_TEAM_DATA | Juego_4 | 0 | 1 | user2 | n/a |  |
+2024-06-23T22:11:53.550359 | SELECT_TEAM | Juego_4 | 1 | 0 | user2 | n/a |  |
+2024-06-23T22:11:54.883274 | TEAM_MANAGEMENT | Juego_4 | 1 | 0 | 192.168.4.21 | n/a | NICK: user2 |
+2024-06-23T22:11:54.883274 | TEAM_MANAGEMENT | Juego_4 | 0 | 1 | 192.168.4.21 | n/a | GET_INTO_TEAM: 1 |
+2024-06-23T22:11:56.260066 | SELECT_TEAM | Juego_4 | 0 | 1 | user2 | 1 |  |
+2024-06-23T22:12:10.784694 | GAME_ACTIONS | Juego_4 | 0 | 1 | user1 | 2 | SEND_DICE: 2 |
+2024-06-23T22:12:11.245811 | GAME_ACTIONS | Juego_4 | 0 | 1 | notebook4 | 2 | SEND_DICE: 4 |
+2024-06-23T22:12:16.813715 | GAME_ACTIONS | Juego_4 | 1 | 0 | user1 | 2 | GET_GAME_STATS |
+2024-06-23T22:12:12.687880 | GAME_ACTIONS | Juego_4 | 1 | 0 | notebook4 | 2 | GET_GAME_STATS |
+2024-06-23T22:12:12.692883 | GAME_ACTIONS | Juego_4 | 1 | 0 | notebook1 | 0 | GET_GAME_STATS |
+2024-06-23T22:12:16.797663 | SEND_GAME_STATS | Juego_4 | 1 | 0 | 192.168.4.21 |  |  |
+2024-06-23T22:12:12.703971 | GAME_ACTIONS | Juego_4 | 1 | 0 | notebook2 | 0 | GET_GAME_STATS |
+2024-06-23T22:12:16.797663 | SEND_GAME_STATS | Juego_4 | 0 | 1 | 192.168.4.21 |  | Team: 0 - Points 19 +Team: 1 - Points 0 +Team: 2 - Points 6 + |
+2024-06-23T22:12:12.720462 | GAME_ACTIONS | Juego_4 | 1 | 0 | notebook3 | 0 | GET_GAME_STATS |
+2024-06-23T22:12:16.890628 | GAME_ACTIONS | Juego_4 | 1 | 0 | user2 | 1 | GET_GAME_STATS |
+2024-06-23T22:12:16.914280 | GAME_ACTIONS | Juego_4 | 0 | 1 | user2 | 1 | GET_GAME_STATS |
+2024-06-23T22:12:12.968274 | GAME_ACTIONS | Juego_4 | 0 | 1 | notebook1 | 0 | GET_GAME_STATS |
+2024-06-23T22:12:13.045831 | GAME_ACTIONS | Juego_4 | 0 | 1 | notebook4 | 2 | GET_GAME_STATS |
+2024-06-23T22:12:13.061827 | GAME_ACTIONS | Juego_4 | 0 | 1 | notebook2 | 0 | GET_GAME_STATS |
+2024-06-23T22:12:13.077834 | GAME_ACTIONS | Juego_4 | 0 | 1 | notebook3 | 0 | GET_GAME_STATS |
+2024-06-23T22:12:18.843645 | GAME_RUNNING | Juego_4 | 1 | 0 | 192.168.4.21 | 0 | NPLAYERS: 3 |
+2024-06-23T22:12:14.736877 | GAME_ACTIONS | Juego_4 | 1 | 0 | notebook3 | 0 | SEND_DICE |
+2024-06-23T22:12:14.767402 | GAME_ACTIONS | Juego_4 | 1 | 0 | notebook2 | 0 | SEND_DICE |
+2024-06-23T22:12:21.593251 | GAME_ACTIONS | Juego_4 | 0 | 1 | notebook1 | 0 | SEND_DICE: 5 |
+2024-06-23T22:12:23.183207 | GAME_ACTIONS | Juego_4 | 0 | 1 | notebook2 | 0 | SEND_DICE: 9 |
+2024-06-23T22:12:24.581092 | GAME_ACTIONS | Juego_4 | 0 | 1 | notebook3 | 0 | SEND_DICE: 8 |
+2024-06-23T22:12:28.875113 | GAME_RUNNING | Juego_4 | 0 | 1 | 192.168.4.21 | 0 | NPLAYERS: 3 |
+2024-06-23T22:12:28.875113 | GAME_RUNNING | Juego_4 | 1 | 0 | 192.168.4.21 | 1 | NPLAYERS: 1 |
+2024-06-23T22:12:28.920938 | GAME_ACTIONS | Juego_4 | 1 | 0 | user2 | 1 | SEND_DICE |
+2024-06-23T22:12:31.240128 | GAME_ACTIONS | Juego_4 | 0 | 1 | user2 | 1 | SEND_DICE: 10 |
+2024-06-23T22:12:38.893377 | GAME_RUNNING | Juego_4 | 0 | 1 | 192.168.4.21 | 1 | NPLAYERS: 1 |
+2024-06-23T22:12:38.924293 | GAME_ACTIONS | Juego_4 | 1 | 0 | user1 | 2 | SEND_DICE |
+2024-06-23T22:12:38.893377 | GAME_RUNNING | Juego_4 | 1 | 0 | 192.168.4.21 | 2 | NPLAYERS: 2 |
+2024-06-23T22:12:34.841694 | GAME_ACTIONS | Juego_4 | 1 | 0 | notebook4 | 2 | SEND_DICE |
+2024-06-23T22:12:39.579387 | GAME_ACTIONS | Juego_4 | 0 | 1 | user1 | 2 | SEND_DICE: 5 |
+2024-06-23T22:12:39.684040 | GAME_ACTIONS | Juego_4 | 0 | 1 | notebook4 | 2 | SEND_DICE: 8 |
+2024-06-23T22:12:48.925333 | GAME_RUNNING | Juego_4 | 0 | 1 | 192.168.4.21 | 2 | NPLAYERS: 2 |
+2024-06-23T22:12:48.988825 | GAME_ACTIONS | Juego_4 | 1 | 0 | user2 | 1 | GET_GAME_STATS |
+2024-06-23T22:12:48.925333 | SEND_GAME_STATS | Juego_4 | 1 | 0 | 192.168.4.21 |  |  |
+2024-06-23T22:12:44.857420 | GAME_ACTIONS | Juego_4 | 1 | 0 | notebook3 | 0 | GET_GAME_STATS |
+2024-06-23T22:12:44.857420 | GAME_ACTIONS | Juego_4 | 1 | 0 | notebook2 | 0 | GET_GAME_STATS |
+2024-06-23T22:12:48.925333 | SEND_GAME_STATS | Juego_4 | 0 | 1 | 192.168.4.21 |  | Team: 0 - Points 41 +Team: 1 - Points 10 +Team: 2 - Points 19 + |
+2024-06-23T22:12:48.974775 | GAME_ACTIONS | Juego_4 | 0 | 1 | user1 | 2 | GET_GAME_STATS |
+2024-06-23T22:12:44.873425 | GAME_ACTIONS | Juego_4 | 1 | 0 | notebook4 | 2 | GET_GAME_STATS |
+2024-06-23T22:12:44.873425 | GAME_ACTIONS | Juego_4 | 1 | 0 | notebook1 | 0 | GET_GAME_STATS |
+2024-06-23T22:12:49.223766 | GAME_ACTIONS | Juego_4 | 0 | 1 | user2 | 1 | GET_GAME_STATS |
+2024-06-23T22:12:45.140104 | GAME_ACTIONS | Juego_4 | 0 | 1 | notebook2 | 0 | GET_GAME_STATS |
+2024-06-23T22:12:45.155641 | GAME_ACTIONS | Juego_4 | 0 | 1 | notebook3 | 0 | GET_GAME_STATS |
+2024-06-23T22:12:45.170640 | GAME_ACTIONS | Juego_4 | 0 | 1 | notebook1 | 0 | GET_GAME_STATS |
+2024-06-23T22:12:45.231671 | GAME_ACTIONS | Juego_4 | 0 | 1 | notebook4 | 2 | GET_GAME_STATS |
+2024-06-23T22:12:51.028082 | GAME_ACTIONS | Juego_4 | 1 | 0 | user2 | 1 | END_GAME |
+2024-06-23T22:12:50.966007 | SEND_GAME_END | Juego_4 | 0 | 1 | 192.168.4.21 |  |  |
+2024-06-23T22:12:46.908889 | GAME_ACTIONS | Juego_4 | 1 | 0 | notebook3 | 0 | END_GAME |
+2024-06-23T22:12:46.938896 | GAME_ACTIONS | Juego_4 | 1 | 0 | notebook1 | 0 | END_GAME |
+2024-06-23T22:12:46.986445 | GAME_ACTIONS | Juego_4 | 1 | 0 | notebook2 | 0 | END_GAME |
