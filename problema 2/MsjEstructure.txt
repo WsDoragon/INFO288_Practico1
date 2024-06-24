@@ -74,6 +74,7 @@ Lista de acciones (PLAYER)
 
 Lista de acciones (server)
 
+  SERVER_START
   PLAYER_REG:-> uso de espacio extra para más info
     NICK:
   SEND_TEAM_INFO:
